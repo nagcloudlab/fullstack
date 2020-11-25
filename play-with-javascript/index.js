@@ -1,41 +1,13 @@
 
-//--------------------------------
-// obj literal enhancements
-//--------------------------------
+console.log("-index.js-")
 
-//--------------------------------
-// ES5
-//--------------------------------
-let name = "Nag"
-let age = 36
+const greetMod = require('fullstack-tng-greet')
+const lodash = require('lodash')
 
-let person = {
-    name: name,
-    age: age,
-    sayName: function () {
-        //..
-    },
-    3: 'three',
-    'home-address': 'chennai'
-}
+greetMod.greet('en')
 
-//--------------------------------
-// ES6
-//--------------------------------
+let arr1 = [1, 2, 3]
+let arr2 = [1, 4, 5]
 
-let addressType = "office"  // office | vacation
-
-let person2 = {
-    name,
-    age,
-    sayName() {
-        //..
-    },
-    [1 + 2]: 'three',
-    [addressType + "-address"]: 'chennai-india',
-    'say Hi'() {
-        console.log("hi")
-    }
-}
-
-person2['say Hi']()
+console.log(lodash.difference(arr1,arr2))
+// 

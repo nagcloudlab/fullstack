@@ -1,0 +1,8 @@
+{
+    "name": "play-with-javascript",
+    "version": "1.0.0.",
+    "dependencies": {
+        "fullstack-tng-greet": "^2.0.0",
+        "lodash": "^4.17.20"
+    }
+}
