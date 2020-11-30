@@ -38,6 +38,6 @@ console.log("--------------------------------")
 const refreshItems = require('./menu')
 console.log(refreshItems.default)
 console.log(refreshItems.secondaryItem1)
-
-
 import './style/theme.css'
+
+import './sample-scripts'
