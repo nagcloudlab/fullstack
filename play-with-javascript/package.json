@@ -1,8 +1,22 @@
 {
-    "name": "play-with-javascript",
-    "version": "1.0.0.",
-    "dependencies": {
-        "fullstack-tng-greet": "^2.0.0",
-        "lodash": "^4.17.20"
-    }
+  "name": "play-with-javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nag",
+  "license": "ISC",
+  "dependencies": {
+    "fullstack-greeting": "^1.1.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.31.0",
+    "html-webpack-plugin": "^3.0.0",
+    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.3.1",
+    "webpack-merge": "^4.1.0"
+  }
 }
