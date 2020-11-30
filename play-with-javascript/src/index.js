@@ -1,12 +1,12 @@
 
 
 //index.js
-console.log("--------------------------------")
-const greetMain = require('fullstack-greeting')
-const _ = require('lodash')
-greetMain.greet('en')//
-console.log(_.difference([1, 2], [3, 1]))
-console.log("--------------------------------")
+// console.log("--------------------------------")
+// const greetMain = require('fullstack-greeting')
+// const _ = require('lodash')
+// greetMain.greet('en')//
+// console.log(_.difference([1, 2], [3, 1]))
+// console.log("--------------------------------")
 
 // import { item1,item2 } from './menu/index'
 // console.log(item1)
@@ -35,9 +35,12 @@ console.log("--------------------------------")
 //
 // import * as refreshItems from './menu/index'
 // - or -
-const refreshItems = require('./menu')
-console.log(refreshItems.default)
-console.log(refreshItems.secondaryItem1)
-import './style/theme.css'
+// const refreshItems = require('./menu')
+// console.log(refreshItems.default)
+// console.log(refreshItems.secondaryItem1)
 
-import './sample-scripts'
+// import './style/theme.css'
+
+// import './sample-scripts'
+
+import './promise-api'
