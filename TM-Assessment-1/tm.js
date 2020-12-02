@@ -4,8 +4,9 @@ const moment = require('moment')
 const Task = require('./model/Task')
 
 
-// data structures
+// use cases 
 
+// data structure ( list | map )
 
 function addNewTask() {
     //...
@@ -16,7 +17,6 @@ function editTask() {
 }
 
 function viewTasks() {
-    return ["1", "2", "3","4"]
 }
 
 function searchTasks() {
