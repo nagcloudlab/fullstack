@@ -2,12 +2,12 @@
 // data model
 
 class Task {
-    constructor() {
+    constructor(text) {
         this.id = 1
-        this.text = "item-1";
+        this.text = text;
         this.project = 'inbox';
         this.schedule = new Date()
-        this.labels = ""
+        this.labels = "red"
         this.priority = "p1"
     }
 }
