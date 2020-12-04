@@ -80,3 +80,45 @@ setInterval(() => {
     let time = new Date().toLocaleTimeString('en', { timeZone: 'America/New_york' })
     timeNowEle.innerText = time
 }, 1000)
+
+
+
+
+//--------------------------------------------
+// using DOM api + XHR (XMLHTTPRequest) apis
+//--------------------------------------------
+
+const topFiveTasksBtn = document.getElementById('top-5-tasks-btn')
+const msgBox = document.getElementById('msg-box');
+
+topFiveTasksBtn.addEventListener('click', e => {
+
+    const apiUrl = 'https://jsonplaceholder.typicode.com/todos?_limit=5'
+    const xhr = new XMLHttpRequest(); // api
+    xhr.open('GET', apiUrl, true)
+    xhr.send()
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 2) {
+            msgBox.innerText = "loading tasks"
+        }
+        if (xhr.readyState === 4) {
+            msgBox.innerText = ""
+            const jsonText = xhr.responseText;
+            const tasks = JSON.parse(jsonText)
+
+            const tableRows = tasks.map((task) => {
+                return `
+                <tr class="${task.completed ? 'bg-danger' : ''}">
+                    <td>${task.id}</td>
+                    <td>${task.title}</td>
+                    <td>${task.completed ? 'completed' : 'pending'}</td>
+                </tr>
+                `
+            })
+            const str = tableRows.join('\n')
+            document.getElementById('task-rows').innerHTML = str
+        }
+    }
+
+
+})
