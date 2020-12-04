@@ -92,11 +92,33 @@ setInterval(() => {
 //--------------------------------------------
 
 const topFiveTasksBtn = document.getElementById('top-5-tasks-btn')
+const countList = document.getElementById('tasks-count-list')
+const countInp = document.getElementById('tasks-count-inp')
 const msgBox = document.getElementById('msg-box');
 
 topFiveTasksBtn.addEventListener('click', e => {
+    countList.value = 5
+    countInp.value = 5
+    loadTasks(5)
+})
+countList.addEventListener('change', e => {
+    let count = e.target.value;
+    countInp.value = count
+    loadTasks(count)
+})
+countInp.addEventListener('blur', e => {
+    let count = e.target.value;
+    let list = [5, 10, 50, 100, 200]
+    if (list.includes(Number.parseInt(count))) {
+        countList.value = count
+    } else {
+        countList.value = '#'
+    }
+    loadTasks(count)
+})
 
-    const apiUrl = 'https://jsonplaceholder.typicode.com/todos?_limit=5'
+function loadTasks(limit) {
+    const apiUrl = `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
     const xhr = new XMLHttpRequest(); // api
     xhr.open('GET', apiUrl, true)
     xhr.send()
@@ -108,20 +130,20 @@ topFiveTasksBtn.addEventListener('click', e => {
             msgBox.innerText = ""
             const jsonText = xhr.responseText;
             const tasks = JSON.parse(jsonText)
-
-            const tableRows = tasks.map((task) => {
-                return `
-                <tr class="${task.completed ? 'bg-danger' : ''}">
-                    <td>${task.id}</td>
-                    <td>${task.title}</td>
-                    <td>${task.completed ? 'completed' : 'pending'}</td>
-                </tr>
-                `
-            })
-            const str = tableRows.join('\n')
-            document.getElementById('task-rows').innerHTML = str
+            renderTasks(tasks)
         }
     }
-
-
-})
+}
+function renderTasks(tasks) {
+    const tableRows = tasks.map((task) => {
+        return `
+        <tr class="${task.completed ? 'bg-danger' : ''}">
+            <td>${task.id}</td>
+            <td>${task.title}</td>
+            <td>${task.completed ? 'completed' : 'pending'}</td>
+        </tr>
+        `
+    })
+    const str = tableRows.join('\n')
+    document.getElementById('task-rows').innerHTML = str
+}
