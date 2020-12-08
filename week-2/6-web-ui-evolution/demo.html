@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>component based ui arch</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body class="container">
+    <hr />
+    <h1> HTML components </h1>
+    <hr />
+
+    <div id="box" class="alert alert-info">
+        <input id="inp1" type="number" onchange="handleChangeEvent(event)" />
+        <hr />
+        <span id="disp" class="badge badge-danger">0</span>
+    </div>
+
+
+    <script>
+        //-------------------------------------
+        // input 
+        //-------------------------------------
+        let inp1 = document.getElementById('inp1')
+        let number = 1
+        // setInterval(() => {
+        //     number++
+        //     inp1.value = number
+        // }, 1000)
+
+        //--------------------------------------
+        // div component
+        //--------------------------------------
+
+        function handleChangeEvent(event) {
+            let v = Number.parseInt(event.target.value) * 10
+            document.getElementById('disp').innerHTML = v
+            if (v > 1000)
+                document.getElementById('box').style['background-color'] = "#AFA"
+        }
+
+    </script>
+
+
+</body>
+
+</html>

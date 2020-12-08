@@ -83,7 +83,7 @@ Modern solutions : using 'web-component' based arch based javascript lib & frame
   
     how to create web-component(s)
 
-    way-1 : using w3c standard apis
+    way-1 : using w3c standard apis  ( html5 )
 
             - template api
             - shadow dom
@@ -97,4 +97,21 @@ Modern solutions : using 'web-component' based arch based javascript lib & frame
 
 ---------------------------------------------------------------------------
 
-UI developer => HTML + CSS + JAVASCRIPT + browser - apis + 
+UI developer => HTML + CSS + JAVASCRIPT + browser - apis +  any best framework
+
+---------------------------------------------------------------------------
+
+
+
+
+
+
+
+sometimes we need component for custom needs
+
+
+ -> Login
+ -> Product
+ -> Calendar
+ 
+ ........
