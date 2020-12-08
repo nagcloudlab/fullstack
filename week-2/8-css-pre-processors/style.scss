@@ -1,0 +1,19 @@
+
+
+$background-color: rgb(230, 198, 230);
+$border-radius: 50%;
+
+@mixin circlemixin($w:100px,$h:100px) {
+    width:$w;
+    height:$h;
+    background-color: $background-color;
+    border-radius: $border-radius;
+  }
+
+.small-circle{
+    @include circlemixin()
+}
+
+.big-circle{
+    @include circlemixin(200px,200px)
+}
