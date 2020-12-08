@@ -1,0 +1,100 @@
+
+
+
+
+complexities / limitations  of javascript code with browser-apis?
+------------------------------------------------------------------
+
+=>  browser compatability issues 
+=>  memory management issues        ( i.e cleaning un-used / hidden DOM elements)
+=>  performance issues              ( i.e always we should perform minimal DOM access)
+=>  code oragnization realy bad     ( i.e ui + logic mixed together )
+=>  too much code
+=>  no re-usable code segments
+
+
+
+legacy solution:   
+
+    => server-side dynamic web page techonologies
+
+        e.g jsp,asp,php,....
+
+
+problems with server-side page techonologies :
+
+    => on every request, 
+       server-side programs should re-construct page keeping client state
+    => on every response, 
+       server will transfer same static resources ( css , icons , images ) , will increase bandwidth
+    => on every new page response,
+        browser always re-load current web page
+
+
+modern solution :
+
+    => using client-side page techonologies ( HTML + CSS + JAVASCRIPT ) 
+
+
+       how?
+
+       ==> all modern browsers following w3c standards
+       ==> javascript language improved lot ( syntax , module , tools , new apis)
+
+       +
+
+       ==> third-party javascript lib + framework support 
+
+
+---------------------------------------------------------
+third-party javascript lib + framework
+---------------------------------------------------------
+
+
+ - jQuery
+
+
+        => DOM & XHR Utility lib
+
+
+---------------------------------------------------
+ MVC pattern based javascript lib & framework
+---------------------------------------------------
+
+    - https://knockoutjs.com/
+    - https://emberjs.com/
+    - https://backbonejs.org/
+    - https://dojotoolkit.org/
+    - https://www.sencha.com/products/extjs/  ( commercial )
+    - https://angularjs.org/
+
+            good feature : 2-way data-binding
+
+    limitations of MVC based javascript lib & framework
+
+        ==> app with too many view(s) & models , difficult debug
+        ==> no-resuable across page(s) or application(s)
+
+
+--------------------------------------------------------------------------
+Modern solutions : using 'web-component' based arch based javascript lib & framework
+-------------------------------------------------------------------------
+
+  
+    how to create web-component(s)
+
+    way-1 : using w3c standard apis
+
+            - template api
+            - shadow dom
+            - custom elements
+
+    way-2 : using third-party javascript lib + framework
+
+            - react.js  from facebook
+            - angular   from google
+            - Vue
+
+---------------------------------------------------------------------------
+
+UI developer => HTML + CSS + JAVASCRIPT + browser - apis + 
