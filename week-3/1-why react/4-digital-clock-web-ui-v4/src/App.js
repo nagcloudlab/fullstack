@@ -13,10 +13,6 @@ function Clock(props) {
 }
 
 
-function AnalogClock(){
-  return
-}
-
 function Board() {
   return (
     <div className="row">
