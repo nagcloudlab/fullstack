@@ -1,14 +1,15 @@
 import React from 'react'
-import Greeting from './components/Greeting'
-// author-1
+
+import Greeting from './components/Greeting-v2'
+import VotingBox from './components/VotingBox';
+
 class App extends React.Component {
-  state = {
-    message: 'greetings'
-  }
   constructor(props) {
     super();
+    this.state = {
+      message: 'greetings'
+    }
     console.log("App :: constructor()")
-    //console.log(props)
   }
   changeMessage(message) {
     // this.setState() ==> trigger diffing
@@ -24,15 +25,42 @@ class App extends React.Component {
       <div className="container">
         <hr />
         <h1>{title} - <small>by {trainer}</small></h1>
+
+        <hr />
+
+        <VotingBox />
+
+
         <hr />
         <button onClick={e => this.changeMessage("good morning")} className="btn btn-dark">GM</button>
         <button onClick={e => this.changeMessage("good noon")} className="btn btn-dark">GN</button>
         <button onClick={e => this.changeMessage("good evening")} className="btn btn-dark">GE</button>
+        <button onClick={e => this.changeMessage("")} className="btn btn-danger">Remove</button>
         <hr />
-        <Greeting message={message} />
+        {message ? <Greeting message={message} /> : null}
       </div>
     )
   }
+
+
+  componentDidMount() {
+    console.log("App :: componentDidMount()")
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("App :: shouldComponentUpdate()")
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("App :: componentDidUpdate()")
+  }
+
+  componentWillUnmount() {
+    console.log("App :: componentWillUnmount()")
+  }
+
+
 }
 
 
