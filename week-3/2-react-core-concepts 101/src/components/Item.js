@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
+
 class Item extends Component {
+
     constructor() {
         super()
         this.state = {
@@ -13,8 +15,9 @@ class Item extends Component {
         })
         let { onVote } = this.props
         if (onVote)
-            onVote(v) // 
+            onVote(v) // call parent func , so that parent can update it's own state
     }
+
     render() {
         let { value } = this.props
         let { count } = this.state
