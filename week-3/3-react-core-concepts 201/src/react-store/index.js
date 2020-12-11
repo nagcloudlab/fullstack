@@ -34,6 +34,9 @@ function connect(mapStateToProps) {
                 )
             }
         }
+
+        WrappedComponentContainer.displayName = `<Connect ${WrappedComponent.name}>`
+
         return WrappedComponentContainer;
     }
 }
