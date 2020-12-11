@@ -3,6 +3,8 @@
 // store ==> data / state
 
 
+// store= state container , where complete UI state exist
+
 const store = {
     listeners: [],
     subscribe: function (listener) {
@@ -44,6 +46,8 @@ const store = {
 
 }
 
+
+// N/W calls using XHR api , fetch api , web-sockets
 
 let i = 0;
 setInterval(() => {

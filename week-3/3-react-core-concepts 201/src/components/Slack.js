@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ChannelList from './ChannelList';
 import MessageList from './MessageList';
+import ErrorBoundary from './ErrorBoundary'
 
 class Slack extends Component {
     constructor() {
@@ -19,13 +20,15 @@ class Slack extends Component {
                 <div className="card-header">Slack</div>
                 <div className="card-body">
                     <div className="row">
-                        <div className="col-4">
-                            <ChannelList channel={channel}
-                                onSelect={channel => this.changeChannel(channel)} />
-                        </div>
-                        <div className="col-6">
-                            <MessageList channel={channel} />
-                        </div>
+                        <ErrorBoundary>
+                            <div className="col-4">
+                                <ChannelList title={"channel list"} channel={channel}
+                                    onSelect={channel => this.changeChannel(channel)} />
+                            </div>
+                            <div className="col-6">
+                                <MessageList title={"messages"} channel={channel} />
+                            </div>
+                        </ErrorBoundary>
                     </div>
                 </div>
             </div>

@@ -5,9 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
+
+let data = {
+  title: 'react',
+  trainer: 'Nag'
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App {...data} />
   </React.StrictMode>,
   document.getElementById('root')
 );

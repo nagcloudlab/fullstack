@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 
 import { connect } from '../react-store'
+import { withCard } from '../react-card-style'
 
+
+// presentational component  ==> how things look
 class ChannelList extends Component {
 
     handleChannelClick(channel) {
@@ -12,8 +15,7 @@ class ChannelList extends Component {
     }
 
     renderChannels() {
-        let { channels } = this.props
-        let { channel: cChannel } = this.props
+        let { channels, channel: cChannel } = this.props
         return channels.map((channel) => {
             return (
                 <tr className={channel === cChannel ? 'bg-primary' : ''} key={channel}>
@@ -26,16 +28,9 @@ class ChannelList extends Component {
 
     render() {
         return (
-            <div className="card">
-                <div className="card-header">Channels</div>
-                <div className="card-body">
-                    <table className="table table-bordered">
-                        <tbody>
-                            {this.renderChannels()}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <React.Fragment>
+                {this.renderChannels()}
+            </React.Fragment>
         );
     }
 }
@@ -46,4 +41,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(ChannelList);
+const ChannelListWithCard = withCard(ChannelList);
+export default connect(mapStateToProps)(ChannelListWithCard);

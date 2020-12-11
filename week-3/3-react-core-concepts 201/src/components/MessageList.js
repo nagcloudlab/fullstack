@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 import { connect } from '../react-store'
 
+import { withCard } from '../react-card-style'
 
 class MessageList extends Component {
-    
+
     renderMessages() {
         let { messages } = this.props
         return messages.map((message, index) => {
@@ -18,16 +19,9 @@ class MessageList extends Component {
 
     render() {
         return (
-            <div className="card">
-                <div className="card-header">messages</div>
-                <div className="card-body">
-                    <table className="table table-bordered">
-                        <tbody>
-                            {this.renderMessages()}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <React.Fragment>
+                {this.renderMessages()}
+            </React.Fragment>
         );
     }
 }
@@ -38,4 +32,4 @@ function mapStateToProps(state, props) {
     }
 }
 
-export default connect(mapStateToProps)(MessageList);
+export default connect(mapStateToProps)(withCard(MessageList));
