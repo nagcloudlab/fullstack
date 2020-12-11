@@ -1,5 +1,5 @@
 import './App.css';
-import Book from './components/Book';
+import Slack from './components/Slack';
 
 
 // import Comp1 from './components/Comp1';
@@ -23,7 +23,7 @@ function App() {
 
 
 
-      <Book />
+      <Slack />
 
 
 
