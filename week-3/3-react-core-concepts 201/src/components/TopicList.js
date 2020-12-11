@@ -12,13 +12,18 @@ class TopicList extends Component {
             topics: store.getState().topics
         }
     }
-
+    handleTopicClick(topic) {
+        let { onSelect } = this.props
+        if (onSelect)
+            onSelect(topic)
+    }
     renderTopics() {
         let { topics } = this.state
+        let { topic: cTopic } = this.props
         return topics.map((topic) => {
             return (
-                <tr key={topic}>
-                    <td>{topic}</td>
+                <tr className={topic === cTopic ? 'bg-primary' : ''} key={topic}>
+                    <td style={{ cursor: 'pointer' }} onClick={e => this.handleTopicClick(topic)}>{topic}</td>
                 </tr>
             )
         })

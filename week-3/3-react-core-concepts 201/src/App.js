@@ -1,7 +1,6 @@
 import './App.css';
+import Book from './components/Book';
 
-import TopicList from './components/TopicList';
-import ChapterList from './components/ChapterList';
 
 // import Comp1 from './components/Comp1';
 // import Box from './components/Box'
@@ -22,22 +21,16 @@ function App() {
       </ol>
       <hr />
 
-      <div className="row">
-        <div className="col-4">
-          <TopicList />
-        </div>
-        <div className="col-6">
-          <ChapterList />
-        </div>
-      </div>
 
 
+      <Book />
 
 
 
 
       {/* 
-      <Box title="veg">
+      
+     <Box title="veg">
         <Veg />
         <Veg />
         <Veg />
@@ -60,8 +53,6 @@ function App() {
 
 
 
-
-
       {/* <Comp1 color="red"/>
       <Comp1 color="green"/>
       <Comp1 color="blue"/> */}
@@ -70,6 +61,7 @@ function App() {
 
     </div>
   );
+
 }
 
 export default App;

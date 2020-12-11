@@ -8,14 +8,25 @@ class ChapterList extends Component {
 
     constructor(props) {
         super()
+        let { topic } = props
         this.state = {
-            chapters: store.getState().chapters['javascript']
+            chapters: store.getState().chapters[topic] || []
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        let { topic: cTopic } = this.props
+        let { topic: pTopic } = prevProps
+        if (cTopic !== pTopic) {
+            const chapters = store.getState().chapters[cTopic] || []
+            this.setState({ chapters })
+        }
+    }
+
+
     renderChapters() {
         let { chapters } = this.state
-        return chapters.map((chapter,index) => {
+        return chapters.map((chapter, index) => {
             return (
                 <tr key={index}>
                     <td>{chapter}</td>
