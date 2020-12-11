@@ -1,41 +1,12 @@
 import React, { Component } from 'react';
 
-import store from '../store'
+import { connect } from '../react-store'
+
 
 class MessageList extends Component {
-
-    constructor(props) {
-        super()
-        let { channel } = props
-        this.state = {
-            messages: store.getState().messages[channel] || []
-        }
-    }
-
-    componentDidMount() {
-        this.unsubscribe = store.subscribe(() => {
-            let { channel } = this.props
-            let messages = store.getState().messages[channel] || []
-            this.setState({ messages })
-        })
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        let { channel: cChannel } = this.props
-        let { channel: pChannel } = prevProps
-        if (cChannel !== pChannel) {
-            const messages = store.getState().messages[cChannel] || []
-            this.setState({ messages })
-        }
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
-    }
-
-
+    
     renderMessages() {
-        let { messages } = this.state
+        let { messages } = this.props
         return messages.map((message, index) => {
             return (
                 <tr key={index}>
@@ -61,4 +32,10 @@ class MessageList extends Component {
     }
 }
 
-export default MessageList;
+function mapStateToProps(state, props) {
+    return {
+        messages: state.messages[props.channel] || []
+    }
+}
+
+export default connect(mapStateToProps)(MessageList);

@@ -1,29 +1,9 @@
 import React, { Component } from 'react';
 
-import store from '../store'
+
+import { connect } from '../react-store'
 
 class ChannelList extends Component {
-
-    constructor(props) {
-        super()
-        this.state = {
-            channels: store.getState().channels || []
-        }
-    }
-
-    componentDidMount() {
-        this.unsubscribe = store.subscribe(() => {
-            let channels = store.getState().channels || []
-            this.setState({ channels })
-        })
-    }
-
-    componentDidUpdate(prevProps, prevState) { }
-
-
-    componentWillUnmount() {
-        this.unsubscribe()
-    }
 
     handleChannelClick(channel) {
         let { onSelect } = this.props
@@ -32,7 +12,7 @@ class ChannelList extends Component {
     }
 
     renderChannels() {
-        let { channels } = this.state
+        let { channels } = this.props
         let { channel: cChannel } = this.props
         return channels.map((channel) => {
             return (
@@ -60,4 +40,10 @@ class ChannelList extends Component {
     }
 }
 
-export default ChannelList;
+function mapStateToProps(state) {
+    return {
+        channels: state.channels || []
+    }
+}
+
+export default connect(mapStateToProps)(ChannelList);

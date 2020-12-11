@@ -7,10 +7,11 @@ const store = {
     listeners: [],
     subscribe: function (listener) {
         this.listeners.push(listener)
-        return () => {
+        let unsubscribe = () => {
             let idx = this.listeners.findIndex(l => l === listener)
             this.listeners.splice(idx, 1)
         }
+        return unsubscribe
     },
     state: {
         channels: [
