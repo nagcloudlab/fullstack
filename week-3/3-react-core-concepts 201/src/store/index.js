@@ -8,7 +8,8 @@ const store = {
     subscribe: function (listener) {
         this.listeners.push(listener)
         return () => {
-            // unsubscribe..
+            let idx = this.listeners.findIndex(l => l === listener)
+            this.listeners.splice(idx, 1)
         }
     },
     state: {

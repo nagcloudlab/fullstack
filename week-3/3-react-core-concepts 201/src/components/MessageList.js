@@ -20,7 +20,6 @@ class MessageList extends Component {
         })
     }
 
-
     componentDidUpdate(prevProps, prevState) {
         let { channel: cChannel } = this.props
         let { channel: pChannel } = prevProps
