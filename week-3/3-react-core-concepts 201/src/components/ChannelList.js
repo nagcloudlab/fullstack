@@ -11,17 +11,16 @@ class ChannelList extends Component {
         }
     }
 
-
     componentDidMount() {
         this.unsubscribe = store.subscribe(() => {
-            let channels = store.getState().channels
+            let channels = store.getState().channels || []
             this.setState({ channels })
         })
     }
 
     componentDidUpdate(prevProps, prevState) { }
 
-    
+
     componentWillUnmount() {
         this.unsubscribe()
     }

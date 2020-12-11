@@ -12,7 +12,12 @@ class MessageList extends Component {
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        this.unsubscribe = store.subscribe(() => {
+            let { channel } = this.props
+            let messages = store.getState().messages[channel] || []
+            this.setState({ messages })
+        })
     }
 
 
@@ -25,8 +30,8 @@ class MessageList extends Component {
         }
     }
 
-    componentWillUnmount(){
-        
+    componentWillUnmount() {
+        this.unsubscribe();
     }
 
 

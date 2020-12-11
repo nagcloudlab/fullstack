@@ -1,6 +1,7 @@
 
 
-// Trainer - Nag
+// store ==> data / state
+
 
 const store = {
     listeners: [],
@@ -29,8 +30,8 @@ const store = {
                 "CSS",
                 "browser apis"
             ],
-            "react":[
-                
+            "react": [
+
             ]
         }
     },
