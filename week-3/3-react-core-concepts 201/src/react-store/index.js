@@ -3,10 +3,10 @@ import React from 'react'
 import store from '../store'
 
 function connect(mapStateToProps) {
+    
     return function (WrappedComponent) {
 
         // container component ==> how things work
-
         class WrappedComponentContainer extends React.Component {
             constructor(props) {
                 super()
@@ -30,7 +30,6 @@ function connect(mapStateToProps) {
             render() {
                 let state = this.state
                 let props = this.props
-                if (1 === 1) throw new TypeError("oops")
                 return (
                     <div>
                         <WrappedComponent {...state} {...props} />

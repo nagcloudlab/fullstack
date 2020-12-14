@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import { connect } from '../react-store'
-
 import { withCard } from '../react-card-style'
 
 class MessageList extends Component {
