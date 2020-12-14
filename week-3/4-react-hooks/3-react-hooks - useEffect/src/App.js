@@ -1,5 +1,5 @@
 
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import appReducer from './reducers'
 
 
@@ -21,11 +21,26 @@ function App() {
   const [state, dispatch] = useReducer(appReducer, { user: '', posts: defaultPosts })
   const { user, posts } = state
 
+  useEffect(() => {
+
+    if (!user) {
+      document.title = "react hooks blog"
+    } else {
+      document.title = user + " react hooks blog"
+    }
+
+    return () => {
+      console.log("willunmount")
+    }
+
+  }, [user])
+
   return (
     <div className="container">
       <hr />
       <h1> blog using react hooks </h1>
       <hr />
+
       <div style={{ padding: 8 }}>
         <UserBar user={user} dispatch={dispatch} />
         <hr />
