@@ -23,10 +23,10 @@ const ItemList = () => {
     ])
 
     const renderItems = () => {
-        return items.map((item) => {
+        return items.map((dataItem) => {
             return (
-                <div key={item.id} className="list-group-item">
-                    <Item value={item} />
+                <div key={dataItem.id} className="list-group-item">
+                    <Item value={dataItem} />
                 </div>
             )
         })

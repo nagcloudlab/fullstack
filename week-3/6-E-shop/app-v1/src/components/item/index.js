@@ -3,27 +3,25 @@ import React, { useState } from 'react';
 const Item = ({ value: item }) => {
 
     const [tab, setTab] = useState(1)
+    const [reviews] = useState([
+        { author: 'who1', stars: 4.5, body: 'sample review-1' },
+        { author: 'who2', stars: 3, body: 'sample review-2 ' }
+    ])
 
-    const renderBuyBtn = (item) => {
+    const renderBuyBtn = () => {
         return item.can_buy ? <button className="btn btn-sm btn-dark">buy</button> : null
     }
-    
+
     const renderTabPanel = () => {
         switch (tab) {
             case 1: {
-                return (
-                    <div>{item.description}</div>
-                )
+                return (<div>{item.description}</div>)
             }
             case 2: {
-                return (
-                    <div>Not Yet</div>
-                )
+                return (<div>Not Yet</div>)
             }
             case 3: {
-                return (
-                    <div>None Yet</div>
-                )
+                return (<div>None Yet</div>)
             }
             default: {
                 return null
