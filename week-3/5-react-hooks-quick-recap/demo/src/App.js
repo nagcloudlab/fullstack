@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import MyInput from './use-ref/MyInput';
 
 function App() {
   return (
@@ -19,8 +18,6 @@ function App() {
       </ol>
 
       <hr />
-
-      <MyInput/>
       
 
     </div>
