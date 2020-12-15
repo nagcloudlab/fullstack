@@ -10,29 +10,39 @@ function App() {
       name: 'Laptop',
       price: 145000,
       description: 'MAC pro 15 inch',
-      canBuy: true
+      can_buy: true,
+      img_path: 'images/Laptop.png',
     },
     {
       id: 2,
       name: 'Mobile',
       price: 15000,
       description: 'iphone',
-      canBuy: true
+      can_buy: true,
+      img_path: 'images/Mobile.png',
     }
   ])
 
 
   const renderBuyBtn = (item) => {
-    return item.canBuy ? <button className="btn btn-sm btn-dark">buy</button> : null
+    return item.can_buy ? <button className="btn btn-sm btn-dark">buy</button> : null
   }
+
   const renderItems = () => {
     return items.map((item) => {
       return (
         <div key={item.id} className="list-group-item">
-          <h5>{item.name}</h5>
-          <h6>&#8377;{item.price}</h6>
-          <div>{item.description}</div>
-          {renderBuyBtn(item)}
+          <div className="row">
+            <div className="col-12 col-sm-3 col-md-3">
+              <img src={item.img_path} alt={item.name} className="img-fluid" />
+            </div>
+            <div className="col-12 col-sm-3 col-md-3">
+              <h5>{item.name}</h5>
+              <h6>&#8377;{item.price}</h6>
+              <div>{item.description}</div>
+              {renderBuyBtn(item)}
+            </div>
+          </div>
         </div>
       )
     })
