@@ -2,24 +2,28 @@
 
 import React, { useReducer } from 'react';
 
+// 
 const reducer = (state, action) => {
+    
     let { type, value = 0 } = action
+
     switch (type) {
-        case 'increment': {
+        case 'INCREMENT': {
             return { ...state, count: state.count + value }
         }
-        case 'decrement': {
+        case 'DECREMENT': {
             return { ...state, count: state.count - value }
         }
-        case 'reset': {
-            return { ...state, count: 0 }
+        case 'RESET': {
+            return { ...state, count: 1000 }
         }
         default:
             return state
     }
 }
+
 const initialState = {
-    count: 0
+    count: 1000
 }
 
 
@@ -33,22 +37,22 @@ const HookVotingBox = () => {
         <div className="card card-body">
             <div className="row">
                 <div className="col-3">
-                    <button onClick={e => dispatch({ type: 'increment', value: 1 })} className="btn btn-lg btn-primary">+1</button>
+                    <button onClick={e => dispatch({ type: 'INCREMENT', value: 1 })} className="btn btn-lg btn-primary">+1</button>
                 </div>
                 <div className="col-3">
-                    <button onClick={e => dispatch({ type: 'increment', value: -1 })} className="btn btn-lg btn-primary">-1</button>
+                    <button onClick={e => dispatch({ type: 'DECREMENT', value: 1 })} className="btn btn-lg btn-primary">-1</button>
                 </div>
                 <div className="col-3">
-                    <button onClick={e => dispatch({ type: 'increment', value: 10 })} className="btn btn-lg btn-primary">+10</button>
+                    <button onClick={e => dispatch({ type: 'INCREMENT', value: 10 })} className="btn btn-lg btn-primary">+10</button>
                 </div>
                 <div className="col-3">
-                    <button onClick={e => dispatch({ type: 'increment', value: -10 })} className="btn btn-lg btn-primary">-10</button>
+                    <button onClick={e => dispatch({ type: 'DECREMENT', value: 10 })} className="btn btn-lg btn-primary">-10</button>
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div className="row">
                 <div className="col-3">
-                    <button onClick={e => dispatch({ type: 'reset' })} className="btn btn-lg btn-warning">reset</button>
+                    <button onClick={e => dispatch({ type: 'RESET' })} className="btn btn-lg btn-warning">reset</button>
                 </div>
                 <div className="col-4">
                     <h3>{count}</h3>

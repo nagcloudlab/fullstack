@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import Box from './use-context-reducer/Box';
+import MyInput from './use-ref/MyInput';
 
 function App() {
   return (
@@ -10,12 +10,18 @@ function App() {
 
       <ol>
         <li>useState</li>
+        <li>useReducer</li>
+        <li>useEffect</li>
+        <li>useContext</li>
+        <li>useMemo</li>
+        <li>useCallback</li>
+        <li>useRef</li>
       </ol>
 
-      <hr/>
-      
-      <Box />
+      <hr />
 
+      <MyInput/>
+      
 
     </div>
   );

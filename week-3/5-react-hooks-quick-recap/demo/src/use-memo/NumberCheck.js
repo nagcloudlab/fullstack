@@ -7,14 +7,11 @@ const NumberCheck = () => {
     const [count2, setCount2] = useState(0)
 
     const isEven = useMemo(() => {
-
-        // let n = 0
-        // for (let i = 0; i < 2000000; i++) {
-        //     n += 1
-        // }
-
+        let n = 0
+        for (let i = 0; i < 200000000; i++) {
+            n += 1
+        }
         return count1 % 2 === 0
-
     }, [count1])
 
     return (

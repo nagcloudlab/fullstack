@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import Batch1 from './Batch1';
 import Batch2 from './Batch2';
 
-export const VoteContext = React.createContext()
+export const VoteContext = React.createContext() // voting  
 
 const reducer = (state, action) => {
     switch (action) {
@@ -19,7 +19,9 @@ const intialState = 0
 
 
 const Box = () => {
+    
     const [state, dispatch] = useReducer(reducer, intialState)
+
     return (
         <div className="card card-body">
             <VoteContext.Provider value={{ dispatch }}>

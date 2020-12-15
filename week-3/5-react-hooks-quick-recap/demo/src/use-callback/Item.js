@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Item = ({ value: item }) => {
+const Item = ({ value: item, onEdit }) => {
     console.log("Item:render()")
     return (
-        <li className="list-group-item">{item}</li>
+        <li onDoubleClick={e => onEdit(item.id)} className="list-group-item">{item.title}</li>
     );
 };
 

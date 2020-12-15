@@ -2,20 +2,24 @@
 import React, { useState } from 'react'
 
 const HookList = () => {
-    const [list, setList] = useState([])
-    const addItem = () => {
-        let item = { id: list.length + 1, value: Math.floor(Math.random() * 100) }
-        // list.push(item)
-        // setList(list)
 
-        //
-        setList(list.concat(item))
+    const [list, setList] = useState([])
+
+    const addItem = () => {
+        console.log("add new item")
+        let item = { id: list.length + 1, value: Math.floor(Math.random() * 100) } // New Item
+        // let newList = [item, ...list]
+        // setList(newList)
+        setList(prevState => [item, ...prevState])
     }
+
     return (
         <div className="card card-body">
+
             <button onClick={addItem} className="btn btn-lg btn-dark">
                 Add Item
             </button>
+
             <br />
             <br />
             <ul className="list-group">

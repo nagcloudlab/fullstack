@@ -4,6 +4,7 @@ const HookAutoCount = () => {
 
     const [count, setCount] = useState(0)
 
+
     const tick = () => {
         setCount(prevCount => prevCount + 1)
     }
