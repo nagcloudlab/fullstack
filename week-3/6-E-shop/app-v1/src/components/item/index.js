@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Review from '../review'
 
-const Item = ({ value: item }) => {
+const Item = ({ value: item, onBuy }) => {
 
     const [tab, setTab] = useState(1)
 
@@ -10,8 +10,15 @@ const Item = ({ value: item }) => {
         { author: 'who2', stars: 3, body: 'sample review-2 ' }
     ])
 
+    const handleBuy = () => {
+        onBuy(item)
+    }
+
     const renderBuyBtn = () => {
-        return item.can_buy ? <button className="btn btn-sm btn-dark">buy</button> : null
+        if (item.can_buy) {
+            return <button onClick={handleBuy} className="btn btn-sm btn-dark">Add to cart</button>
+        }
+
     }
 
     const renderReviews = () => {

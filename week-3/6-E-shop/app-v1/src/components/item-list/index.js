@@ -22,11 +22,17 @@ const ItemList = () => {
         }
     ])
 
+    const [cart, setCart] = useState([])
+
+    const addToCart = item => {
+        setCart([item, ...cart])
+    }
+
     const renderItems = () => {
         return items.map((dataItem) => {
             return (
                 <div key={dataItem.id} className="list-group-item">
-                    <Item value={dataItem} />
+                    <Item value={dataItem} onBuy={addToCart} />
                 </div>
             )
         })
@@ -34,6 +40,10 @@ const ItemList = () => {
 
     return (
         <div>
+            <hr />
+            <i className="fa fa-shopping-cart"></i>&nbsp;
+            <span>{cart.length}</span> item(s) in cart
+            <hr />
             <div className="list-group">
                 {renderItems()}
             </div>

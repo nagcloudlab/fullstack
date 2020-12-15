@@ -8,8 +8,6 @@ function App() {
   return (
     <div className="">
       <Navbar title="E-shop-v1" />
-      <hr />
-      <hr />
       <div className="container">
         <ItemList />
       </div>

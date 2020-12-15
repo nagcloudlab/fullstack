@@ -7,7 +7,7 @@ function renderStars(n) {
     for (i = 0; i < Math.floor(n); i++) {
         stars.push(<i key={i} className="fa fa-star"></i>)
     }
-    if ((n - 0.5) % 2 === 0) {
+    if (!Number.isInteger(n)) {
         stars.push(<i key={i} className="fa fa-star-half"></i>)
     }
     return stars;
