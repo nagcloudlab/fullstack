@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import Review from '../review'
 
 const Item = ({ value: item }) => {
 
     const [tab, setTab] = useState(1)
+
     const [reviews] = useState([
         { author: 'who1', stars: 4.5, body: 'sample review-1' },
         { author: 'who2', stars: 3, body: 'sample review-2 ' }
@@ -10,6 +12,12 @@ const Item = ({ value: item }) => {
 
     const renderBuyBtn = () => {
         return item.can_buy ? <button className="btn btn-sm btn-dark">buy</button> : null
+    }
+
+    const renderReviews = () => {
+        return reviews.map((rev, idx) => {
+            return <Review value={rev} key={idx} />
+        })
     }
 
     const renderTabPanel = () => {
@@ -21,7 +29,7 @@ const Item = ({ value: item }) => {
                 return (<div>Not Yet</div>)
             }
             case 3: {
-                return (<div>None Yet</div>)
+                return (<div>{renderReviews()}</div>)
             }
             default: {
                 return null
