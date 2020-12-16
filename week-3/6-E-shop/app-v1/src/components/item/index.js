@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Review from '../review'
 
+import { Link } from 'react-router-dom'
+
 const Item = ({ value: item, onBuy }) => {
 
     const [tab, setTab] = useState(1)
@@ -53,7 +55,8 @@ const Item = ({ value: item, onBuy }) => {
                     <h5>{item.name}</h5>
                     <h6>&#8377;{item.price}</h6>
                     {renderBuyBtn(item)}
-                    <br /><br />
+                    <Link to={`item/${item.id}`}> view details</Link>
+                    <hr />
                     <ul className="nav nav-tabs">
                         <li className="nav-item">
                             <a
