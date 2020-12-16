@@ -2,7 +2,7 @@
 
 
 --------------------------------------------------------------
- Arch.. design issues  with 'react.js' on UI application only
+ Arch.. design issues  with 'react.js' on UI application 
  --------------------------------------------------------------
 
 
@@ -10,9 +10,9 @@
 ==> if same state is required in multiple components 
     either we should duplicate that state in components or we should pass via input properties
 ==> state & state-change logic & network/service calls 
-    are tightly-coupled with UI components    
-==> Unit-Testing is very difficult in components    
+    are tightly-coupled with UI components     
 ==> we cant re-use same components across diffent pages or applications
+==> Unit-Testing is very difficult in components   
 
 
  
@@ -22,11 +22,7 @@ soln:
 
     How ?
 
-        way-1 : using MVC Arch pattern
-
-                --> bi-directional data-flow b/w view & state/model
-        
-        way-2 : Flux pattern  ( from facebook )
+        way-1 : Flux pattern  ( from facebook )
 
                  --> uni-directional data-flow b/w view & state/model        
 
@@ -82,17 +78,25 @@ step-2 : identify force/action(s) that cause state change
                 - REQUEST_ERROR
                 - REQUEST_SUCCES
 
-     .......           
+                .......           
 
 
 step-3: define reducer(s) , to process action(s) 
+
             - itemsReducer(prevState,action) ==> newItemsState
             - reviewsReducer(prevState,action) ==> newReviewsState
             - cartReducer(prevState,action) ==> newCartState
 
-step-4: combine all reducer(s) as rootReducer    
+step-4: combine all reducer(s) as rootReducer  
 
-step-5: create store with rootReducer and initialState
+
+step-5: create 'store' with rootReducer and initialState
+
+
+step-6: connect store with react components 
+
+        way-1 : HOF
+        way-2 : hooks ( ill choose this )
 
 
 ---------------------------------------------------------------------------

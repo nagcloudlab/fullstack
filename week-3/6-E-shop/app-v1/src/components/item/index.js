@@ -4,10 +4,26 @@ import Review from '../review'
 import axios from 'axios'
 import ReviewForm from '../review-form-v2';
 
-const Item = ({ value: item, onBuy }) => {
+import { useDispatch, useSelector } from 'react-redux'
+
+const Item = ({ value: item }) => {
 
     const [tab, setTab] = useState(1)
     const [reviews, setReviews] = useState([])
+
+    const cartLine = useSelector(state => state.cart[item.id])
+    let qty = 0;
+    if (cartLine) {
+        qty = cartLine.qty;
+    }
+
+    const dispatch = useDispatch();
+
+
+    const handleCartItemQty = (qty, item) => {
+        let action = { type: 'CART_QTY', item, qty }
+        dispatch(action)
+    }
 
     useEffect(() => {
         if (tab === 3) {
@@ -22,7 +38,9 @@ const Item = ({ value: item, onBuy }) => {
     }, [tab])
 
     const handleBuy = () => {
-        onBuy(item)
+        // onBuy(item)
+        let action = { type: 'BUY', item }
+        dispatch(action)// dispatch action to redux store
     }
 
     const handleNewReview = (review) => {
@@ -37,7 +55,7 @@ const Item = ({ value: item, onBuy }) => {
 
     const renderBuyBtn = () => {
         if (item.canBuy) {
-            return <button onClick={handleBuy} className="btn btn-sm btn-dark">Add to cart</button>
+            return <button onClick={handleBuy} className="btn btn-lg btn-dark">Add to cart</button>
         }
     }
 
@@ -85,11 +103,11 @@ const Item = ({ value: item, onBuy }) => {
 
                     <span className="m-3">
                         <span className="badge badge-warning">
-                            <i className="fa fa-plus p-1"></i>
+                            <i onClick={e => handleCartItemQty(1, item)} className="fa fa-plus p-2"></i>
                         </span>
-                        <span className="m-2">{0}</span>
+                        <span className="m-2">{qty}</span>
                         <span className="badge badge-warning">
-                            <i className="fa fa-minus p-1"></i>
+                            <i onClick={e => handleCartItemQty(-1, item)} className="fa fa-minus p-2"></i>
                         </span>
                     </span>
 

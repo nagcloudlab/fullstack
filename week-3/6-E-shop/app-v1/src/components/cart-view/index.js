@@ -1,13 +1,29 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
 
-const CartView = ({ value: cart }) => {
+import { useSelector, useDispatch } from 'react-redux'
+
+const CartView = () => {
+
+    const cart = useSelector(state => state.cart)
+    const dispatch = useDispatch()
 
     const history = useHistory();
 
     let total = 0
 
     let keys = Object.keys(cart)
+
+
+    const handleRemoveCartItem = item => {
+        let action = { type: 'CART_REMOVE', item }
+        dispatch(action)
+    }
+
+    const handleCartItemQty = (qty, item) => {
+        let action = { type: 'CART_QTY', item, qty }
+        dispatch(action)
+    }
 
     const renderCartItems = () => {
         return keys.map((key => {
@@ -20,17 +36,17 @@ const CartView = ({ value: cart }) => {
                     <td>&#8377;{item.price}</td>
                     <td>
                         <span className="badge badge-warning">
-                            <i className="fa fa-plus"></i>
+                            <i onClick={e => handleCartItemQty(1, item)} className="fa fa-plus p-2"></i>
                         </span>
                         <span className="m-2">{qty}</span>
                         <span className="badge badge-warning">
-                            <i className="fa fa-minus"></i>
+                            <i onClick={e => handleCartItemQty(-1, item)} className="fa fa-minus p-2"></i>
                         </span>
                     </td>
                     <td>
                         &#8377;{qty * item.price}
                     </td>
-                    <td><i className="fa fa-trash"></i></td>
+                    <td><i onClick={e => handleRemoveCartItem(item)} className="fa fa-trash"></i></td>
                 </tr>
             )
         }))

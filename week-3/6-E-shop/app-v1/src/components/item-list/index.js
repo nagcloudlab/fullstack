@@ -3,7 +3,7 @@ import Item from '../item';
 
 import axios from 'axios'
 
-const ItemList = ({ onBuy }) => {
+const ItemList = () => {
 
     const [items, setItems] = useState([])
 
@@ -21,7 +21,7 @@ const ItemList = ({ onBuy }) => {
         return items.map((dataItem) => {
             return (
                 <div key={dataItem.id} className="">
-                    <Item value={dataItem} onBuy={onBuy} />
+                    <Item value={dataItem} />
                 </div>
             )
         })
