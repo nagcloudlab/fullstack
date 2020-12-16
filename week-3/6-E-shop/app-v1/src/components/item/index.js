@@ -18,7 +18,6 @@ const Item = ({ value: item, onBuy }) => {
         if (item.can_buy) {
             return <button onClick={handleBuy} className="btn btn-sm btn-dark">Add to cart</button>
         }
-
     }
 
     const renderReviews = () => {
@@ -57,19 +56,34 @@ const Item = ({ value: item, onBuy }) => {
                     <br /><br />
                     <ul className="nav nav-tabs">
                         <li className="nav-item">
-                            <a className={`nav-link ${tab === 1 ? 'active' : ''}`} href="#" onClick={e => setTab(1)}>Description</a>
+                            <a
+                                className={`nav-link ${tab === 1 ? 'active' : ''}`}
+                                href="/"
+                                onClick={e => { e.preventDefault(); setTab(1) }}>
+                                Description
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${tab === 2 ? 'active' : ''}`} href="#" onClick={e => setTab(2)}>Specification</a>
+                            <a
+                                className={`nav-link ${tab === 2 ? 'active' : ''}`}
+                                href="/"
+                                onClick={e => { e.preventDefault(); setTab(2) }}>
+                                Specification
+                            </a>
                         </li>
                         <li className="nav-item">
-                            <a className={`nav-link ${tab === 3 ? 'active' : ''}`} href="#" onClick={e => setTab(3)}>Reviews</a>
+                            <a
+                                className={`nav-link ${tab === 3 ? 'active' : ''}`}
+                                href="/"
+                                onClick={e => { e.preventDefault(); setTab(3) }}>
+                                Reviews
+                            </a>
                         </li>
                     </ul>
                     {renderTabPanel(item)}
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
