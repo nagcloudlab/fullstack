@@ -1,0 +1,99 @@
+
+
+
+--------------------------------------------------------------
+ Arch.. design issues  with 'react.js' on UI application only
+ --------------------------------------------------------------
+
+
+==> state/model/ui-data is scattered across UI components
+==> if same state is required in multiple components 
+    either we should duplicate that state in components or we should pass via input properties
+==> state & state-change logic & network/service calls 
+    are tightly-coupled with UI components    
+==> Unit-Testing is very difficult in components    
+==> we cant re-use same components across diffent pages or applications
+
+
+ 
+soln:
+
+    ==> isolate state & state change & n/w-ing logic from UI components
+
+    How ?
+
+        way-1 : using MVC Arch pattern
+
+                --> bi-directional data-flow b/w view & state/model
+        
+        way-2 : Flux pattern  ( from facebook )
+
+                 --> uni-directional data-flow b/w view & state/model        
+
+
+----------------------------------------------------------
+
+        Dan Abramov  
+        
+            ==> reducer + flux = redux library
+
+----------------------------------------------------------------
+
+
+        why we need redux ?
+
+            => to manage javascript's UI appln state effectively
+
+----------------------------------------------------------------       
+
+
+
+----------------------------------------------------------------
+steps to use redux library
+----------------------------------------------------------------
+
+
+step-1 : identify ui application's state
+----------------------------------------------------------------
+
+    e.g e-shop ui appln
+    -------------------
+                - items
+                - reviews
+                - cart
+                - user
+                - orders
+                - loadingStatus
+
+
+step-2 : identify force/action(s) that cause state change
+ 
+
+    e.g e-shop ui appln
+    -------------------
+
+                - LOAD_ITEMS
+                - SEARCH_ITEMS
+                - LOAD_REVIEWS
+                - ADD_NEW_REVIEW
+                - BUY
+                - LOGIN 
+                - REQUEST_BEGIN
+                - REQUEST_ERROR
+                - REQUEST_SUCCES
+
+     .......           
+
+
+step-3: define reducer(s) , to process action(s) 
+            - itemsReducer(prevState,action) ==> newItemsState
+            - reviewsReducer(prevState,action) ==> newReviewsState
+            - cartReducer(prevState,action) ==> newCartState
+
+step-4: combine all reducer(s) as rootReducer    
+
+step-5: create store with rootReducer and initialState
+
+
+---------------------------------------------------------------------------
+

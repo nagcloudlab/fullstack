@@ -49,7 +49,7 @@ const ReviewForm = ({ onSubmit }) => {
                             </div>
                             <button className="btn btn-sm btn-dark">submit</button>
                             &nbsp;
-                            <button onClick={e => setOpen(!isOpen)} className="btn btn-sm btn-danger">cancel</button>
+                            <button onClick={e => setOpen(!isOpen)} className="btn btn-sm btn-secondary">cancel</button>
                         </form>
                     </div>
                 </div>

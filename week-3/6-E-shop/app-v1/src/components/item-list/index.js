@@ -7,7 +7,6 @@ const ItemList = ({ onBuy }) => {
 
     const [items, setItems] = useState([])
 
-
     useEffect(() => {
         const apiUrl = 'http://localhost:8080/api/items'
         axios
@@ -21,7 +20,7 @@ const ItemList = ({ onBuy }) => {
     const renderItems = () => {
         return items.map((dataItem) => {
             return (
-                <div key={dataItem.id} className="list-group-item">
+                <div key={dataItem.id} className="">
                     <Item value={dataItem} onBuy={onBuy} />
                 </div>
             )

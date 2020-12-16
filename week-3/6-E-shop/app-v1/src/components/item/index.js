@@ -7,7 +7,6 @@ import ReviewForm from '../review-form-v2';
 const Item = ({ value: item, onBuy }) => {
 
     const [tab, setTab] = useState(1)
-
     const [reviews, setReviews] = useState([])
 
     useEffect(() => {
@@ -79,11 +78,22 @@ const Item = ({ value: item, onBuy }) => {
                 <div className="col-12 col-sm-3 col-md-3">
                     <img src={item.imagePath} alt={item.name} className="img-fluid" />
                 </div>
-                <div className="col-12 col-sm-9 col-md-9">
+                <div className="col-12 col-sm-6 col-md-6">
                     <h5>{item.name}</h5>
                     <h6>&#8377;{item.price}</h6>
-                    {renderBuyBtn(item)}
-                    <hr />
+                    <span className="mr-3">{renderBuyBtn(item)}</span>
+
+                    <span className="m-3">
+                        <span className="badge badge-warning">
+                            <i className="fa fa-plus p-1"></i>
+                        </span>
+                        <span className="m-2">{0}</span>
+                        <span className="badge badge-warning">
+                            <i className="fa fa-minus p-1"></i>
+                        </span>
+                    </span>
+
+                    <div className="mt-5"></div>
                     <ul className="nav nav-tabs">
                         <li className="nav-item">
                             <a
@@ -113,7 +123,8 @@ const Item = ({ value: item, onBuy }) => {
                     {renderTabPanel(item)}
                 </div>
             </div>
-        </div >
+            <hr />
+        </div>
     );
 };
 
