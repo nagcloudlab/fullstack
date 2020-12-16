@@ -12,6 +12,7 @@ const Item = ({ value: item }) => {
     const [reviews, setReviews] = useState([])
 
     const cartLine = useSelector(state => state.cart[item.id])
+
     let qty = 0;
     if (cartLine) {
         qty = cartLine.qty;
@@ -20,8 +21,9 @@ const Item = ({ value: item }) => {
     const dispatch = useDispatch();
 
 
-    const handleCartItemQty = (qty, item) => {
-        let action = { type: 'CART_QTY', item, qty }
+    const handleCartItemQty = (q, item) => {
+        if (qty === 0) return
+        let action = { type: 'CART_QTY', item, qty: q }
         dispatch(action)
     }
 

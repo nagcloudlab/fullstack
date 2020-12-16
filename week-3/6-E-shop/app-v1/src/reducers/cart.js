@@ -33,6 +33,12 @@ function cartReducer(state = {}, action) {
             let cartLine = state[id]
             if (cartLine)
                 cartLine = { ...cartLine, qty: cartLine.qty + qty }
+
+            if (cartLine.qty === 0) {
+                delete state[id]
+                return { ...state }
+            }
+            
             return {
                 ...state, [id]: cartLine
             }

@@ -25,6 +25,7 @@ const CartView = () => {
         dispatch(action)
     }
 
+
     const renderCartItems = () => {
         return keys.map((key => {
             let cartLine = cart[key]
