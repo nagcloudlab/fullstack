@@ -1,23 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Review from '../review'
 
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import ReviewForm from '../review-form-v2';
 
 const Item = ({ value: item, onBuy }) => {
 
     const [tab, setTab] = useState(1)
 
-    const [reviews] = useState([
-        { author: 'who1', stars: 4.5, body: 'sample review-1' },
-        { author: 'who2', stars: 3, body: 'sample review-2 ' }
-    ])
+    const [reviews, setReviews] = useState([])
+
+    useEffect(() => {
+        if (tab === 3) {
+            const apiUrl = `http://localhost:8080/api/items/${item.id}/reviews`
+            axios
+                .get(apiUrl)
+                .then(response => response.data)
+                .then(reviews => {
+                    setReviews(reviews)
+                })
+        }
+    }, [tab])
 
     const handleBuy = () => {
         onBuy(item)
     }
 
+    const handleNewReview = (review) => {
+        const apiUrl = `http://localhost:8080/api/items/${item.id}/reviews`
+        axios
+            .post(apiUrl, review)
+            .then(response => response.data)
+            .then(review => {
+                setReviews([review, ...reviews])
+            })
+    }
+
     const renderBuyBtn = () => {
-        if (item.can_buy) {
+        if (item.canBuy) {
             return <button onClick={handleBuy} className="btn btn-sm btn-dark">Add to cart</button>
         }
     }
@@ -37,7 +57,15 @@ const Item = ({ value: item, onBuy }) => {
                 return (<div>Not Yet</div>)
             }
             case 3: {
-                return (<div>{renderReviews()}</div>)
+                return (
+                    <div>
+                        {renderReviews()}
+                        <div className="row">
+                            <div className="col-md-8">
+                                <ReviewForm onSubmit={handleNewReview} />
+                            </div>
+                        </div>
+                    </div>)
             }
             default: {
                 return null
@@ -49,13 +77,12 @@ const Item = ({ value: item, onBuy }) => {
         <div>
             <div className="row">
                 <div className="col-12 col-sm-3 col-md-3">
-                    <img src={item.img_path} alt={item.name} className="img-fluid" />
+                    <img src={item.imagePath} alt={item.name} className="img-fluid" />
                 </div>
                 <div className="col-12 col-sm-9 col-md-9">
                     <h5>{item.name}</h5>
                     <h6>&#8377;{item.price}</h6>
                     {renderBuyBtn(item)}
-                    <Link to={`item/${item.id}`}> view details</Link>
                     <hr />
                     <ul className="nav nav-tabs">
                         <li className="nav-item">

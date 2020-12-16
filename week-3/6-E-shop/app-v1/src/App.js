@@ -4,7 +4,6 @@ import Home from './components/home'
 import ItemList from './components/item-list'
 import NotFound from './components/not-found'
 import Login from './components/login'
-import ItemDetails from './components/item-details'
 
 
 import {
@@ -69,7 +68,6 @@ function App() {
             <Route path="/cart">
               <CartView value={cart} />
             </Route>
-            <Route path="/item/:itemId" component={ItemDetails} />
             <Route path="/login" component={Login} />
             <Route>
               <NotFound />

@@ -1,10 +1,9 @@
 import React from 'react';
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const CartView = ({ value: cart }) => {
 
     const history = useHistory();
-    // const location = useLocation();
 
     const renderCartItems = () => {
         let keys = Object.keys(cart)
@@ -55,9 +54,6 @@ const CartView = ({ value: cart }) => {
             <div className="row">
                 <div className="col-6">
                     <button onClick={handleGoBack}>go back</button>
-                </div>
-                <div className="col-6">
-                    <button onClick={handleLoginBtn}>login</button>
                 </div>
             </div>
             <hr />
