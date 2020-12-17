@@ -23,7 +23,7 @@ const Item = ({ value: item }) => {
 
     const handleCartItemQty = (q, item) => {
         if (qty === 0) return
-        let action = { type: 'CART_QTY', item, qty: q }
+        let action = { type: 'CART_ITEM_QTY', item, qty: q }
         dispatch(action)
     }
 
@@ -40,7 +40,6 @@ const Item = ({ value: item }) => {
     }, [tab])
 
     const handleBuy = () => {
-        // onBuy(item)
         let action = { type: 'BUY', item }
         dispatch(action)// dispatch action to redux store
     }

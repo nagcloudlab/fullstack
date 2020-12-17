@@ -11,17 +11,15 @@ const CartView = () => {
     const history = useHistory();
 
     let total = 0
-
     let keys = Object.keys(cart)
 
-
     const handleRemoveCartItem = item => {
-        let action = { type: 'CART_REMOVE', item }
+        let action = { type: 'CART_ITEM_REMOVE', item }
         dispatch(action)
     }
 
     const handleCartItemQty = (qty, item) => {
-        let action = { type: 'CART_QTY', item, qty }
+        let action = { type: 'CART_ITEM_QTY', item, qty }
         dispatch(action)
     }
 

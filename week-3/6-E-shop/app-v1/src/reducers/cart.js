@@ -1,13 +1,5 @@
 
-// let p={
-//     name:'Nag',
-//     age:37
-// }
-
-// delete p.name;
-
 function cartReducer(state = {}, action) {
-
     let { type } = action
     switch (type) {
         case 'BUY': {
@@ -21,13 +13,13 @@ function cartReducer(state = {}, action) {
             }
             return { ...state, [id]: cartLine }
         }
-        case 'CART_REMOVE': {
+        case 'CART_ITEM_REMOVE': {
             let { item } = action
             let { id } = item;
             delete state[id] // mutable
             return { ...state };
         }
-        case 'CART_QTY': {
+        case 'CART_ITEM_QTY': {
             let { item, qty } = action
             let { id } = item;
             let cartLine = state[id]
@@ -38,7 +30,6 @@ function cartReducer(state = {}, action) {
                 delete state[id]
                 return { ...state }
             }
-            
             return {
                 ...state, [id]: cartLine
             }
