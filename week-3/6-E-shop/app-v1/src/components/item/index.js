@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Review from '../review'
-
-import axios from 'axios'
 import ReviewForm from '../review-form-v2';
+
+import * as api from '../../api'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 const Item = ({ value: item }) => {
 
     const [tab, setTab] = useState(1)
-    const [reviews, setReviews] = useState([])
 
     const cartLine = useSelector(state => state.cart[item.id])
+    const reviews = useSelector(state => state.reviews[item.id] || [])
+
+    const dispatch = useDispatch();
+
 
     let qty = 0;
     if (cartLine) {
         qty = cartLine.qty;
     }
-
-    const dispatch = useDispatch();
 
 
     const handleCartItemQty = (q, item) => {
@@ -29,13 +30,8 @@ const Item = ({ value: item }) => {
 
     useEffect(() => {
         if (tab === 3) {
-            const apiUrl = `http://localhost:8080/api/items/${item.id}/reviews`
-            axios
-                .get(apiUrl)
-                .then(response => response.data)
-                .then(reviews => {
-                    setReviews(reviews)
-                })
+            let action = api.getReviews(item.id)
+            dispatch(action)
         }
     }, [tab])
 
@@ -45,13 +41,10 @@ const Item = ({ value: item }) => {
     }
 
     const handleNewReview = (review) => {
-        const apiUrl = `http://localhost:8080/api/items/${item.id}/reviews`
-        axios
-            .post(apiUrl, review)
-            .then(response => response.data)
-            .then(review => {
-                setReviews([review, ...reviews])
-            })
+        // let action = { type: 'ADD_NEW_REVIEW', review, itemId: item.id }
+        // dispatch(action) // sync action
+        let action = api.postNewReview(review, item.id)
+        dispatch(action) // async action
     }
 
     const renderBuyBtn = () => {

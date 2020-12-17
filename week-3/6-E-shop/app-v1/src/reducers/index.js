@@ -2,13 +2,14 @@
 
 
 import { cartReducer } from './cart'
+import { reviewsReducer } from './reviews'
 
 import { combineReducers } from 'redux'
 
 
 const rootReducer = combineReducers({
     cart: cartReducer,
-    // items:itemsReducer
+    reviews: reviewsReducer
 });
 
 export default rootReducer;
