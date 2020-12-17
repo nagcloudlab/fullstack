@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Navbar from './components/navbar'
 import Home from './components/home'
 import ItemList from './components/item-list'
 import NotFound from './components/not-found'
 import Login from './components/login'
+import Alert from './components/alert'
 
 import {
   BrowserRouter as Router,
@@ -24,7 +25,7 @@ function App() {
         <Router>
           <div>
             <hr />
-            <CartBadge/>
+            <CartBadge />
             <hr />
             <ul className="nav">
               <li className="nav-item">
@@ -42,6 +43,8 @@ function App() {
             </ul>
             <hr />
           </div>
+
+          <Alert />
 
           <Switch>
             <Route path="/" exact>

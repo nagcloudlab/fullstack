@@ -9,7 +9,8 @@ import rootReducer from '../reducers'
 
 const intialState = {
     cart: {},
-    reviews: {}
+    reviews: {},
+    items: []
 }
 const middleware = [thunk]
 const composeEnhancers = composeWithDevTools({

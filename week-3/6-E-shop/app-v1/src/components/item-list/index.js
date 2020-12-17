@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Item from '../item';
 
-import axios from 'axios'
+import * as api from '../../api'
+
+import { useSelector,useDispatch } from 'react-redux'
 
 const ItemList = () => {
 
-    const [items, setItems] = useState([])
-
+    const items = useSelector(state => state.items)
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        const apiUrl = 'http://localhost:8080/api/items'
-        axios
-            .get(apiUrl)
-            .then(response => response.data)
-            .then(items => {
-                setItems(items)
-            })
+        dispatch(api.getItems())
     }, [])
 
     const renderItems = () => {

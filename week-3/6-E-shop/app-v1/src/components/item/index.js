@@ -21,16 +21,16 @@ const Item = ({ value: item }) => {
         qty = cartLine.qty;
     }
 
-
+ 
     const handleCartItemQty = (q, item) => {
         if (qty === 0) return
-        let action = { type: 'CART_ITEM_QTY', item, qty: q }
+        let action = { type: 'CART_ITEM_QTY', item, qty: q } // sync action
         dispatch(action)
     }
 
     useEffect(() => {
         if (tab === 3) {
-            let action = api.getReviews(item.id)
+            let action = api.getReviews(item.id) // async
             dispatch(action)
         }
     }, [tab])
