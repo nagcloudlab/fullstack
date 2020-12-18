@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>index</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        #box {
+            width: 150px;
+            height: 180px;
+            padding: 30px;
+            background-color: rgb(100, 150, 250);
+        }
+    </style>
+</head>
+
+<body class="container">
+
+    <hr />
+    <h1>fullscreen api </h1>
+    <hr />
+
+    <div id="box">
+        fullscreen box
+    </div>
+
+
+    <script>
+        function getFullscreenElement() {
+            return document.fullscreenElement
+        }
+        function toggleFullscreen() {
+            if (getFullscreenElement()) {
+                document.exitFullscreen()
+            } else {
+                document.getElementById('box').requestFullscreen()
+                    .then(e => {
+                        console.log("in fullscreen")
+                    })
+                    .catch(error => {
+                        console.log(error)
+                    })
+            }
+        }
+        document.getElementById('box').addEventListener('dblclick', e => {
+            toggleFullscreen()
+        })
+        document.addEventListener('fullscreenchange', e => {
+            console.log(e)
+            console.log("fullscreen change")
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>
