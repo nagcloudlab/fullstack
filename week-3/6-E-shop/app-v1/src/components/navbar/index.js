@@ -13,4 +13,4 @@ const Navbar = ({ title }) => {
     );
 };
 
-export default Navbar;
+export default Navbar; 

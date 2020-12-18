@@ -12,7 +12,7 @@ exports[`matches snapshot 1`] = `
         className="navbar-brand"
         href="/"
       >
-        e-shop
+        E-shop
       </a>
     </div>
   </nav>
