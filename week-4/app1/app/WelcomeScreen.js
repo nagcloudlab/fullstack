@@ -7,7 +7,7 @@ function WelcomeScreen(props) {
             style={styles.background}
             source={require("./assets/background.jpg")}
         >
-            <Text>Welcome screen</Text>
+
         </ImageBackground>
     );
 }
