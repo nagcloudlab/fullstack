@@ -5,6 +5,7 @@ import ItemList from './components/item-list'
 import NotFound from './components/not-found'
 import Login from './components/login'
 import Alert from './components/alert'
+import CartBadge from './components/cart-badge'
 
 import {
   BrowserRouter as Router,
@@ -15,7 +16,7 @@ import {
 import CartView from './components/cart-view';
 
 
-import CartBadge from './components/cart-badge'
+
 
 function App() {
   return (

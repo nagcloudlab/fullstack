@@ -3,6 +3,10 @@ import React from 'react';
 
 import { useSelector } from 'react-redux'
 
+// import './index.css'
+
+import styles from './index.module.css'
+
 const Alert = () => {
 
     const networkStatus = useSelector(state => state.networkStatus)
@@ -12,7 +16,7 @@ const Alert = () => {
 
         if (message) {
             return (
-                <div className="alert alert-info">
+                <div className={styles.bg}>
                     {message}
                 </div>
             )
