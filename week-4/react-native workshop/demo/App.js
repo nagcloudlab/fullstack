@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 
 import ListingEditScreen from "./app/screens/ListingEditScreen";
 import AccountScreen from "./app/screens/AccountScreen";
@@ -12,8 +12,13 @@ import RegisterScreen from "./app/screens/RegisterScreen";
 import MessagesScreen from "./app/screens/MessagesScreen";
 import ViewImageScreen from "./app/screens/ViewImageScreen";
 
+import Screen from './app/components/Screen'
+
 export default function App() {
+
+
   return (
-    <ViewImageScreen />
-  );
+    <ListingEditScreen />
+  )
+
 }
