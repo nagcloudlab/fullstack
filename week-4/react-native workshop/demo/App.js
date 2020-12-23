@@ -1,22 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import React, { useEffect, useState, useReducer } from 'react';
+import { StyleSheet, Text, View, Button, Image, FlatList } from 'react-native';
 
-import { NavigationContainer } from "@react-navigation/native";
-import navigationTheme from "./app/navigation/navigationTheme";
-
-
-
-import AuthNavigator from './app/navigation/AuthNavigator'
-import AppNavigator from './app/navigation/AppNavigator'
+import Screen from './app/components/Screen'
+import AsyncStorage from '@react-native-community/async-storage'
 
 
+import AppNavigator from "./app/navigation/AppNavigator"
+import AuthNavigator from "./app/navigation/AuthNavigator"
+
+import { NavigationContainer } from '@react-navigation/native'
 
 
 export default function App() {
+  const [token, setToken] = useState(null)
+  const loadToken = async () => {
+    await AsyncStorage.setItem('auth-token', 'd7564fs85f4795x8z76v5x7zcv') // for testing
+    const token = await AsyncStorage.getItem('auth-token')
+    if (token)
+      setToken(token)
+  }
+  useEffect(() => {
+    loadToken()
+  }, [])
+  const renderScreen = () => {
+    if (token)
+      return <AppNavigator />
+    else
+      return <AuthNavigator />
+  }
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <AppNavigator />
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        {renderScreen()}
+      </NavigationContainer>
+    </>
   )
 }
