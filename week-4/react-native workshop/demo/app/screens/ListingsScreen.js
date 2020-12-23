@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
@@ -21,6 +21,13 @@ const listings = [
 ];
 
 function ListingsScreen({ navigation }) {
+
+  useEffect(() => {
+    fetch('https://locahost:8080/api/items')
+      .then(response => response.json)
+      .then(items => console.log(items))
+  }, [])
+
   return (
     <Screen style={styles.screen}>
       <FlatList
