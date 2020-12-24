@@ -1,32 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
 import Screen from "../components/Screen";
 
-const listings = [
-  {
-    id: 1,
-    title: "Red jacket for sale",
-    price: 100,
-    image: require("../assets/jacket.jpg"),
-  },
-  {
-    id: 2,
-    title: "Couch in great condition",
-    price: 1000,
-    image: require("../assets/couch.jpg"),
-  },
-];
+import listingsApi from "../api/listings";
+import AppText from "../components/Text";
+import { Button } from "react-native-elements";
+
+
+import ActivityIndicator from "../components/ActivityIndicator";
+
+import useApi from "../hooks/useApi";
+
 
 function ListingsScreen({ navigation }) {
 
+  const { data: listings, error, loading, request } = useApi(listingsApi.getListings);
+
   useEffect(() => {
+    request()
   }, [])
+
 
   return (
     <Screen style={styles.screen}>
+      {error && (
+        <>
+          <AppText>Couldn't retrieve the listings.</AppText>
+          <Button title="Retry" onPress={request} />
+        </>
+      )}
+
+      <ActivityIndicator visible={loading} />
+
+
       <FlatList
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
@@ -39,6 +48,7 @@ function ListingsScreen({ navigation }) {
           />
         )}
       />
+
     </Screen>
   );
 }

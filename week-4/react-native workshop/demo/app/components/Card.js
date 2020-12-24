@@ -5,10 +5,11 @@ import Text from "./Text";
 import colors from "../config/colors";
 
 function Card({ title, subTitle, image, onPress }) {
+  console.log(image)
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.card}>
-        <Image style={styles.image} source={image} />
+        <Image style={styles.image} source={{ uri: image }} />
         <View style={styles.detailsContainer}>
           <Text style={styles.title} numberOfLines={1}>
             {title}

@@ -12,7 +12,7 @@ export default useApi = (apiFunc) => {
 
     if (!response.ok) return setError(true);
 
-    setError(false);
+    
     setData(response.data);
   };
 
