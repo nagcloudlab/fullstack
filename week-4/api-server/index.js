@@ -1,9 +1,12 @@
 
 const express = require('express')
 const app = express()
+const multer = require('multer')
+
 
 // for static resources i.e images
 app.use(express.static('public'))
+
 
 // 
 const listings = [
@@ -23,6 +26,30 @@ const listings = [
 
 app.get("/api/listings", (req, res) => {
     res.json(listings)
+})
+
+
+const upload = multer({
+    storage: multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'public/assets/')
+        },
+        filename: function (req, file, cb) {
+            cb(null, file.originalname)
+        }
+    })
+});
+
+app.post('/api/listings', upload.single('images'), (req, res, next) => {
+    console.log(req.file)
+    let listing = {
+        id: listings.length + 1,
+        title: req.body.title,
+        price: req.body.price,
+        image: `http://172.20.10.3:8080/assets/${req.file.originalname}`
+    }
+    listings.unshift(listing)
+    res.json(listing)
 })
 
 
