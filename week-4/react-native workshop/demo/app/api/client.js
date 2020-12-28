@@ -4,7 +4,7 @@ import cache from "../utility/cache";
 
 
 const apiClient = create({
-    baseURL: 'http://172.20.10.3:8080/api/'
+    baseURL: 'http://13.233.247.242:8080/api/'
 })
 
 const get = apiClient.get; // orignal apisauce get method reference
