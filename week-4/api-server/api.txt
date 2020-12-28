@@ -1,9 +1,0 @@
-
-
-
-GET  /api/listings
-POST /api/listings
-
-POST /api/login
-POST /api/register
-
