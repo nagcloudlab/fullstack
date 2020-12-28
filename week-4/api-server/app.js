@@ -45,7 +45,7 @@ app.use('/api', authentication);
 
 app.use(express.static('public'))
 
-
+//GET : /api/listings
 app.get("/api/listings", passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json(data.listings)
 })
@@ -63,6 +63,7 @@ const upload = multer({
   })
 });
 
+//POST :  /api/listings
 app.post('/api/listings', upload.single('images'), (req, res, next) => {
   console.log(req.file)
   let listing = {
