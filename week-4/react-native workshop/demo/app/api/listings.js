@@ -4,7 +4,7 @@ import client from "./client";
 const endpoint = "listings"
 const getListings = () => client.get(endpoint)
 
-const addListing = (listing) => {
+const addListing = (listing, callback) => {
 
     const data = new FormData();
     data.append("title", listing.title);
@@ -23,7 +23,11 @@ const addListing = (listing) => {
     if (listing.location)
         data.append("location", JSON.stringify(listing.location));
 
-    return client.post(endpoint, data)
+    return client.post(endpoint, data, {
+        onUploadProgress: (progress) => {
+            callback(progress.loaded / progress.total); // 0, 0.10 , 0.20 0.30 .... 1 🧘‍
+        }
+    })
 
 }
 

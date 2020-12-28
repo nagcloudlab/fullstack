@@ -52,7 +52,6 @@ app.get("/api/listings", (req, res) => {
 })
 
 
-
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -68,7 +67,7 @@ const upload = multer({
 app.post('/api/listings', upload.single('images'), (req, res, next) => {
   console.log(req.file)
   let listing = {
-    id: listings.length + 1,
+    id: data.listings.length + 1,
     title: req.body.title,
     price: req.body.price,
     image: `http://172.20.10.3:8080/assets/${req.file.filename}`
@@ -79,8 +78,6 @@ app.post('/api/listings', upload.single('images'), (req, res, next) => {
 
 
 //----------------------------------------------------------------
-
-
 
 /**
  * End Server Routes
