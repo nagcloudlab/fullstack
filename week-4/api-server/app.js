@@ -45,8 +45,9 @@ app.use('/api', authentication);
 
 app.use(express.static('public'))
 
+
 //GET : /api/listings
-app.get("/api/listings", passport.authenticate('jwt', { session: false }), (req, res) => {
+app.get("/api/listings", (req, res) => {
   res.json(data.listings)
 })
 
@@ -72,7 +73,7 @@ app.post('/api/listings', upload.single('images'), (req, res, next) => {
     price: req.body.price,
     image: `http://172.20.10.3:8080/assets/${req.file.filename}`
   }
-  listings.unshift(listing)
+  data.listings.unshift(listing)
   res.json(listing)
 })
 
