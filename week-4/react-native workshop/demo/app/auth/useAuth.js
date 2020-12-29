@@ -10,7 +10,7 @@ export default useAuth = () => {
 
     const logIn = (authToken) => {
         const user = jwtDecode(authToken); // {name,email} ==> use claims
-        setUser(user);
+        setUser(user); // trigger App comp state
         authStorage.storeToken(authToken);
     };
 
