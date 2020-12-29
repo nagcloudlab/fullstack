@@ -1,7 +1,12 @@
 
 
+-------------------------------------------------
 
-- Node.js introduction
+- introduction
 - blocking vs non-blocking IO
+- event model
 
-- Node.js's event driven model
+-------------------------------------------------
+
+
+- create HTTP server on Node.js
