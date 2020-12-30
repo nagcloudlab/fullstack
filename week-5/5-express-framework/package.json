@@ -1,0 +1,15 @@
+{
+  "name": "express-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ndex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.9.8"
+  }
+}

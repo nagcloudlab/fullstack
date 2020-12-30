@@ -5,8 +5,17 @@
 - introduction
 - blocking vs non-blocking IO
 - event model
+- create HTTP server on Node.js
+- core modules 
+    i.e modules which are exist in Node.js platform
+        e.g  fs, http, ..
 
 -------------------------------------------------
 
 
-- create HTTP server on Node.js
+E.g Todo appln on Node platform with core modules only
+
+
+-------------------------------------------------
+
+
