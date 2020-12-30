@@ -42,6 +42,7 @@ app.use(morgan('short'))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use("/api/todos", todos)
 
+app.get("/", middleware, middleware)
 
 app.get("/profile", (req, res, next) => {
     const profile = {
@@ -76,6 +77,10 @@ app.use("/req2", (req, res, next) => {
 })
 
 
+app.use("/req3", (req, res, next) => {
+    next(new Error("oops"))
+})
+
 
 app.get("/path1", (req, res) => {
     console.log("path1 request processeed")
@@ -94,6 +99,9 @@ app.get("/express.pdf", (req, res) => {
 })
 
 
+app.use((err, req, res, next) => {
+
+})
 
 
 
