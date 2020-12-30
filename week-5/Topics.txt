@@ -19,3 +19,14 @@ E.g Todo appln on Node platform with core modules only
 -------------------------------------------------
 
 
+
+
+
+query params ===> to filter the resources , e.g /accounts?acctype=saving
+path params  ===> to identify the resource , e.g /accounts/1/transactions/1234234
+
+
+
+
+
+
