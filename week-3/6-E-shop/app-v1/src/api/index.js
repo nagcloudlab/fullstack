@@ -4,7 +4,6 @@ import axios from 'axios'
 const baseUrl = "http://localhost:8080/api"
 
 
-
 export function getItems() {
     return function (dispatch) {
         dispatch({ type: 'REQUEST_BEGIN', message: 'loading items...' })
@@ -45,6 +44,37 @@ export function postNewReview(review, itemId) {
             .then(response => response.data)
             .then(rev => {
                 dispatch({ type: 'ADD_NEW_REVIEW', review: rev, itemId })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+
+
+export function addToCart(item) {
+    return function (dispatch) {
+        axios
+            .post(`${baseUrl}/cart/`, { item })
+            .then(response => response.data)
+            .then(rev => {
+                dispatch({ type: 'BUY', item })
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}
+
+
+export function loadCart() {
+    return function (dispatch) {
+        axios
+            .get(`${baseUrl}/cart`)
+            .then(response => response.data)
+            .then(cart => {
+                dispatch({ type: 'LOAD_CART', cart })
             })
             .catch(err => {
                 console.log(err)

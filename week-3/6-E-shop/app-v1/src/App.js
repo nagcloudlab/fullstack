@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './components/navbar'
 import Home from './components/home'
 import ItemList from './components/item-list'
@@ -15,10 +15,16 @@ import {
 } from "react-router-dom";
 import CartView from './components/cart-view';
 
-
-
+import * as api from './api'
+import { useDispatch } from 'react-redux'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(api.loadCart())
+  }, [])
+
   return (
     <div className="">
       <Navbar title="E-shop-v1" />

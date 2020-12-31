@@ -21,7 +21,7 @@ const Item = ({ value: item }) => {
         qty = cartLine.qty;
     }
 
- 
+
     const handleCartItemQty = (q, item) => {
         if (qty === 0) return
         let action = { type: 'CART_ITEM_QTY', item, qty: q } // sync action
@@ -36,7 +36,7 @@ const Item = ({ value: item }) => {
     }, [tab])
 
     const handleBuy = () => {
-        let action = { type: 'BUY', item }
+        let action = api.addToCart(item);
         dispatch(action)// dispatch action to redux store
     }
 
@@ -48,7 +48,7 @@ const Item = ({ value: item }) => {
     }
 
     const renderBuyBtn = () => {
-        if (item.canBuy) {
+        if (item.can_buy) {
             return <button onClick={handleBuy} className="btn btn-lg btn-dark">Add to cart</button>
         }
     }
@@ -88,7 +88,7 @@ const Item = ({ value: item }) => {
         <div>
             <div className="row">
                 <div className="col-12 col-sm-3 col-md-3">
-                    <img src={item.imagePath} alt={item.name} className="img-fluid" />
+                    <img src={item.image_path} alt={item.name} className="img-fluid" />
                 </div>
                 <div className="col-12 col-sm-6 col-md-6">
                     <h5>{item.name}</h5>

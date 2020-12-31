@@ -2,6 +2,10 @@
 function cartReducer(state = {}, action) {
     let { type } = action
     switch (type) {
+        case 'LOAD_CART': {
+            let { cart } = action
+            return cart
+        }
         case 'BUY': {
             let { item } = action
             let { id } = item

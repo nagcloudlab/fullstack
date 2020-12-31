@@ -1,0 +1,78 @@
+
+
+REST ( Representational State Transfer ) Api
+
+
+------------------------------------------------------------
+know your resource(s)
+------------------------------------------------------------
+
+  - item
+  - review
+  - cart
+  - order
+  - user
+
+----------------------------------------------------------------
+
+
+1. Resource identification in requests
+
+   /api/items
+   /api/items/{itemId}
+   /api/items/{itemId}/reviews
+   /api/items/{itemId}/reviews/{reviewId}
+
+   /api/users
+   /api/users/{userId}
+   /api/users/{userId}/orders
+   /api/users/{userId}/orders/{orderId}
+
+   /api/auth
+
+   
+   read => GET
+
+----------------------------------------------------------------
+
+2. Resource manipulation through representations
+
+   HTML
+   XML
+   JSON 
+   
+   XLSX
+   PDF
+
+   any media type
+
+----------------------------------------------------------------
+
+3. Self-descriptive messages  ( Request/Response Headers )
+
+    Request Headers
+    ------------------
+
+        Content-Type : 'application/json'
+        Accept : 'application/json'
+        Authorization : 'bearer token' 
+
+    Response Headers
+    ------------------
+        Content-Type : 'application/json'
+
+----------------------------------------------------------------
+
+4. Hypermedia as the engine of application state (HATEOAS)
+
+   https://en.wikipedia.org/wiki/HATEOAS
+
+ ----------------------------------------------------------------  
+        
+
+
+
+
+
+
+
