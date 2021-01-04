@@ -1,0 +1,89 @@
+
+
+
+REST ( Representational State Transfer ) Api principles
+
+
+------------------------------------------------------------
+know your resource(s)
+------------------------------------------------------------
+
+  - item
+  - review
+  - cart
+  - order
+  - user
+
+----------------------------------------------------------------
+
+
+1. Resource identification in requests
+
+   /api/items
+   /api/items/{itemId}
+   /api/items/{itemId}/reviews
+   /api/items/{itemId}/reviews/{reviewId}
+
+   /api/users
+   /api/users/{userId}
+   /api/users/{userId}/orders
+   /api/users/{userId}/orders/{orderId}
+
+   /api/auth
+
+   
+   GET, HEAD ==> read
+   POST      ==> to create new resource
+   PUT       ==> to update resource if exist else to create new resource
+   PATCH     ==> to do partial update on existing resource
+   DELETE    ==> to delete existing resource
+   OPTIONS   ==> to know privileges on specific resource
+   
+
+----------------------------------------------------------------
+
+2. Resource manipulation through representations
+
+   HTML
+   XML
+   JSON  ( 90% )
+   
+   XLSX
+   PDF
+
+   any media type
+
+----------------------------------------------------------------
+
+3. Self-descriptive messages  ( Request/Response Headers )
+
+    Request Headers
+    ------------------
+
+        Content-Type : 'application/json'
+        Accept : 'application/json'
+        Authorization : 'bearer token' 
+
+    Response Headers
+    ------------------
+        Content-Type : 'application/json'
+
+
+    + custom header
+
+    
+----------------------------------------------------------------
+
+4. Hypermedia as the engine of application state (HATEOAS)
+
+   https://en.wikipedia.org/wiki/HATEOAS
+
+ ----------------------------------------------------------------  
+        
+
+
+
+
+
+
+
