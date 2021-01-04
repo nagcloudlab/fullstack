@@ -24,8 +24,20 @@ app.use(bodyParser.json());
 
 app.use('/', users);
 
+// if ('google') {
+//     app.use(passport.authenticate('google', { session: false }))
+// }
+
+// if ('facebook') {
+//     app.use(passport.authenticate('facebook', { session: false }))
+// }
+
+// if ('jwt') {
+app.use(passport.authenticate('jwt', { session: false }))
+// }
+
 // Plug in the JWT strategy as a middleware so only verified users can access this route.
-app.use('/secure', passport.authenticate('jwt', { session: false }), secureRoute);
+app.use('/secure', secureRoute);
 
 // Handle errors.
 app.use(function (err, req, res, next) {
