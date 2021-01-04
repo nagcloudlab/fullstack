@@ -7,6 +7,14 @@ const apiClient = create({
     baseURL: 'http://13.233.247.242:8080/api/'
 })
 
+// on every HTTP call with apisauce, Authorization header will be included with token
+apiClient.addAsyncRequestTransform(async (request) => {
+    const authToken = await authStorage.getToken();
+    if (!authToken) return;w
+    request.headers["Authorization"] = `Bearer ${authToken}`;
+});
+
+
 const get = apiClient.get; // orignal apisauce get method reference
 
 // proxy / around-execute pattern

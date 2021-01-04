@@ -9,7 +9,7 @@ export default useAuth = () => {
     const { user, setUser } = useContext(AuthContext);
 
     const logIn = (authToken) => {
-        const user = jwtDecode(authToken); // {name,email} ==> use claims
+        const user = jwtDecode(authToken); // {name,email} ==> user claims
         setUser(user); // trigger App comp state
         authStorage.storeToken(authToken);
     };
