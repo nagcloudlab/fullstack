@@ -42,4 +42,10 @@ app.post('/upload-multiple-files', upload.array('my-files', 12), (req, res, next
 })
 
 
+app.use((err, req, res, next) => {
+    if (err)
+        res.json(err)
+})
+
+
 app.listen(3000, () => console.log('Server started on port 3000'));

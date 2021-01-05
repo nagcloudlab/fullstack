@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var numUsers = 0;
 
 io.on('connection', (socket) => {
-    
+
     var addedUser = false;
 
     // when the client emits 'new message', this listens and executes
