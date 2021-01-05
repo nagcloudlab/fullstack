@@ -1,0 +1,28 @@
+{
+    "apps": [
+        {
+            "name": "express-web-server1",
+            "cwd": "/Users/nag/Desktop/fullstack/week-5/Level-2/Node-scalability",
+            "script": "app.js",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules"
+            ],
+            "env": {
+                "PORT": 8181
+            }
+        },
+        {
+            "name": "express-web-server2",
+            "cwd": "/Users/nag/Desktop/fullstack/week-5/Level-2/Node-scalability",
+            "script": "app2.js",
+            "watch": true,
+            "ignore_watch": [
+                "node_modules"
+            ],
+            "env": {
+                "PORT": 8282
+            }
+        }
+    ]
+}
