@@ -67,14 +67,13 @@ logger.level = "info";
                 I: Interface segregation principle 
                 D: Dependency inversion principle
 
-        -  OO paterns
+        -  OO patterns
         
                 1. creational
                 2. structural
                 3. behavioral
 
                 
-
 */
 
 class TransferService {
