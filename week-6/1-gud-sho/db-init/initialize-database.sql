@@ -21,8 +21,8 @@ create table genres(
 create table movies_genres(
     movie_id int,
     genre_id int,
-    FOREIGN KEY (movie_id) references movies,
-    FOREIGN KEY (genre_id) references genres
+    FOREIGN KEY (movie_id) references movies(id),
+    FOREIGN KEY (genre_id) references genres(id)
 );
 insert into genres (genre) values('romance');
 insert into genres (genre) values('adventure');
