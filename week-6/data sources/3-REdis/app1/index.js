@@ -1,5 +1,4 @@
 
-
 const express = require('express');
 const fetch = require('node-fetch');
 const redis = require('redis')
@@ -16,6 +15,7 @@ async function getRepos(req, res, nex) {
     try {
         console.log("Fetching data")
         const { username } = req.params
+        console.time("START time")
         const url = `https://api.github.com/users/${username}`
         // http request to github API
         const response = await fetch(url)
@@ -24,6 +24,7 @@ async function getRepos(req, res, nex) {
         // reposCache[username] = repos // SET
         redisClient.setex(username, 3600, repos)
         res.send(`<h2>${username} has ${repos} Github repos</h2>`)
+        console.timeEnd(`END time`);
     } catch (err) {
         console.error(err)
         res.status(500)
