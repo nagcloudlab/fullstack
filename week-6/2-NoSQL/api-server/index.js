@@ -4,20 +4,28 @@ const express = require('express')
 const { MongoClient } = require("mongodb");
 
 // Replace the uri string with your MongoDB deployment's connection string.
-const uri = "mongodb://root:rootpassword@localhost:27017/test"
-const client = new MongoClient(uri);
+
+
+// Connection URL
+var url = 'mongodb://localhost:27017';
+const client = new MongoClient(url);
 
 const app = express();
 
-// api/potions`
+// api/potions
 app.get("/api/potions", async (req, res) => {
-
     try {
         await client.connect();
         const database = client.db('test');
         const collection = database.collection('potions');
-        const potions = await collection.find()
-        res.json(potions)
+        const cursor = await collection.find()
+
+        // print a message if no documents were found
+        if ((await cursor.count()) === 0) {
+            console.log("No documents found!");
+        }
+        await cursor.forEach(console.dir);
+
     } catch (error) {
         throw error;
         // res.json(error);
