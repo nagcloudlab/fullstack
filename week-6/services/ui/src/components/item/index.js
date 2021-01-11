@@ -30,7 +30,7 @@ const Item = ({ value: item }) => {
 
     useEffect(() => {
         if (tab === 3) {
-            let action = api.getReviews(item.id) // async
+            let action = api.getReviews(item._id) // async
             dispatch(action)
         }
     }, [tab])

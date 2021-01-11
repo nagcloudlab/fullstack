@@ -12,6 +12,20 @@ const schema = Joi.object({
 
 router
     .route("/")
+    /**
+     * @swagger
+     * /api/items:
+     *   get:
+     *     description: Get all items
+     *     responses:
+     *       200:
+     *         description: Success
+     * 
+     */
+
+    /*
+     * reference : https://github.com/JayaramachandranAugustin/EmployeeManagementService/blob/main/index.js
+    */
     .get((req, res, next) => {
         Item.find({}, (err, data) => {
             if (err)
@@ -21,7 +35,6 @@ router
     })
     .post(auth, async (req, res, next) => {
         let { body } = req
-        // TODO : validate item-data 
         const item = new Item({ ...body })
         await item.save()
         res.status(201).json({ item })

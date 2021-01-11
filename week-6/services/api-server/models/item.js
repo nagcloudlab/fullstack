@@ -7,12 +7,18 @@ const schema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     description: {
         type: String,
         required: true
+    },
+    image_path: {
+        type: String
+    },
+    can_buy: {
+        type: Boolean
     }
 });
 

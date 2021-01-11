@@ -1,7 +1,28 @@
 
 import axios from 'axios'
+import jwtDecode from "jwt-decode";
 
 const baseUrl = "http://localhost:8080/api"
+
+
+export function auth(credentials) {
+
+    return function (dispatch) {
+        axios
+            .post(`${baseUrl}/auth`, credentials)
+            .then(response => response.data)
+            .then(auth => {
+                localStorage.setItem('auth-token', auth.token)
+                const user = jwtDecode(auth.token);
+                dispatch({ type: 'USER_LOGIN_SUCCESS', user })
+            })
+            .catch(error => {
+                dispatch({ type: 'USER_LOGIN_FAILED', message: error.message })
+            })
+    }
+
+}
+
 
 
 export function getItems() {

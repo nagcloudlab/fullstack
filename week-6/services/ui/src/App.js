@@ -14,17 +14,26 @@ import {
   Link
 } from "react-router-dom";
 import CartView from './components/cart-view';
+import jwtDecode from "jwt-decode";
 
 import * as api from './api'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 function App() {
   const dispatch = useDispatch()
-
+  const user = useSelector(state => state.user)
   useEffect(() => {
-    dispatch(api.loadCart())
+    let token = localStorage.getItem('auth-token')
+    if (token) {
+      const user = jwtDecode(token);
+      dispatch({ type: 'USER_LOGIN_SUCCESS', user })
+    }
   }, [])
-
+  const handleLogout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem('auth-token')
+    dispatch({ type: 'USER_LOGOUT' })
+  }
   return (
     <div className="">
       <Navbar title="E-shop-v1" />
@@ -45,7 +54,8 @@ function App() {
                 <Link className="nav-link" to="/orders">Orders</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
+                {user.currentUser ? <a className="nav-link" href="/" onClick={e => handleLogout(e)}>Logout</a> : null}
+                {user.currentUser ? null : <Link className="nav-link" to="/login">Login</Link>}
               </li>
             </ul>
             <hr />

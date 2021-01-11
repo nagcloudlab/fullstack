@@ -33,10 +33,6 @@ const ReviewForm = ({ onSubmit }) => {
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
                             <div className="form-group">
-                                <label>Author</label>
-                                <input value={review.author} id="author" onChange={handleChange} className="form-control" />
-                            </div>
-                            <div className="form-group">
                                 <label>Stars</label>
                                 <input value={review.stars} id="stars" onChange={handleChange} type="number" min="1" max="5" className="form-control" />
                                 {review.stars < 2 ? 'oops' : ''}
