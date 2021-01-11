@@ -1,0 +1,8 @@
+{
+    "jwt": {
+        "secret": "shhhhhh"
+    },
+    "db": {
+        "url": "mongodb+srv://user1:user111@cluster0.socov.mongodb.net/app_db"
+    }
+}

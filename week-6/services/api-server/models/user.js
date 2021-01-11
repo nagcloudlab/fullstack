@@ -1,5 +1,8 @@
+const config = require('config');
+const jwt = require('jsonwebtoken');
 const Joi = require('joi')
 const mongoose = require('mongoose')
+
 
 const schema = new mongoose.Schema({
     name: {
@@ -15,6 +18,12 @@ const schema = new mongoose.Schema({
         required: true
     }
 });
+
+// Information Expert Principle (add method to model)
+schema.methods.generateAuthToken = function () {
+    const token = jwt.sign({ _id: this._id, name: this.name, email: this.email }, config.get('jwt.secret'));
+    return token;
+};
 
 const User = mongoose.model('User', schema, 'users')
 

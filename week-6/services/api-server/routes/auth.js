@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const config = require('config');
 const Joi = require('joi');
 const bcrypt = require('bcrypt');
 const _ = require('lodash');
@@ -15,7 +16,6 @@ router.post('/', async (req, res) => {
         return res.status(400).send(error.details[0].message);
     }
 
-
     //  Now find the user by their email address
     let user = await User.findOne({ email: req.body.email });
     if (!user) {
@@ -29,8 +29,13 @@ router.post('/', async (req, res) => {
         return res.status(400).send('Incorrect email or password.');
     }
 
-    const token=jwt.sign({})
-    res.send(true);
+    // const token = jwt.sign({ _id: user._id, email: user.email, name: user.name }, config.get("jwt.secret"))
+    const token = user.generateAuthToken();
+    res
+        .header({ 'x-auth-powered-by': 'JWT' })
+        .send({
+            token
+        });
 
 
 });
