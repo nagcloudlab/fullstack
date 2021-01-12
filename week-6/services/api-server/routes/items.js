@@ -2,6 +2,7 @@ const express = require('express')
 const Joi = require('joi');
 const router = express.Router();
 const { Item } = require('../models/item')
+const { Review } = require('../models/review')
 const { auth } = require('../middleware/auth')
 
 const schema = Joi.object({
@@ -48,12 +49,21 @@ router
         //...
         res.json({})
     })
-    .post(express.json(), auth, (req, res, next) => {
+    .post(express.json(), auth, async (req, res, next) => {
+
+        let itemId = req.params.itemsId;
         let { body, user } = req
-        const errors = schema.validate(body)
-        console.log(body)
-        console.log(user)
-        res.json({})
+
+        const review = new Review({
+            stars: body.stars,
+            body: req.body.body,
+            item: mongoose.Schema.Types.ObjectId(itemId),
+            user: mongoose.Schema.Types.ObjectId(user._id),
+        })
+
+        await review.save()
+        //..
+        res.json(review)
     })
 
 
