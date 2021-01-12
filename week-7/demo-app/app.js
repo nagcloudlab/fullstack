@@ -24,14 +24,14 @@ app.use('/users', usersRouter);
 
 
 let myShows = [
-  // 'Bones',
-  // 'Psych',
-  // 'Big Bang Theory',
-  // 'Mad Men',
-  // 'Breaking Bad',
-  // 'Modern Family',
-  // 'Game of Thrones',
-  // 'Dexter'
+  'Bones',
+  'Psych',
+  'Big Bang Theory',
+  'Mad Men',
+  'Breaking Bad',
+  'Modern Family',
+  'Game of Thrones',
+  'Dexter'
 ];
 
 
