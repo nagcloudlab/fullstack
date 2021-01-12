@@ -30,8 +30,6 @@ const books = [
     { id: 8, name: 'Beyond the Shadows', authorId: 3 }
 ]
 
-
-
 const AuthorType = new GraphQLObjectType({
     name: 'Author',
     description: 'This represents a author of a book',
@@ -137,7 +135,6 @@ const schema = new GraphQLSchema({
     query: RootQueryType,
     mutation: RootMutationType
 })
-
 
 const app = express();
 
