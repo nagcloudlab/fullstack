@@ -1,5 +1,7 @@
 
 const express = require('express')
+const cors = require('cors')
+
 const {
     GraphQLSchema,
     GraphQLObjectType,
@@ -130,18 +132,18 @@ const RootMutationType = new GraphQLObjectType({
     })
 })
 
-
 const schema = new GraphQLSchema({
-    query: RootQueryType,
-    mutation: RootMutationType
+    query: RootQueryType, // read
+    mutation: RootMutationType // write
 })
 
 const app = express();
-
+app.use(cors())
 app.use('/graphql', graphqlHTTP({
     schema: schema,
     graphiql: true // testing tool
 }))
+
 
 app.listen(8080, () => {
     console.log("api-server up")

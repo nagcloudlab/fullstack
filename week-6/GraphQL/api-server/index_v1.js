@@ -27,7 +27,7 @@ const books = [
 // Api => REST api
 
 /*
-   GET /api/authors
+GET /api/authors
 */
 app.get("/api/authors", (req, res, next) => {
     res.json(authors)
@@ -35,7 +35,7 @@ app.get("/api/authors", (req, res, next) => {
 
 
 /*
-   GET /api/authors/{id}/books
+GET /api/authors/{id}/books
 */
 app.get("/api/authors/:id/books", (req, res, next) => {
     const id = Number.parseInt(req.params.id);
@@ -44,20 +44,19 @@ app.get("/api/authors/:id/books", (req, res, next) => {
 })
 
 /*
-   GET /api/books
+GET /api/books
 */
 app.get("/api/books", (req, res, next) => {
     res.json(books)
 })
 
 /*
-   GET /api/books/{id}
+GET /api/books/{id}
 */
 app.get("/api/books/:id", (req, res, next) => {
     const id = Number.parseInt(req.params.id);
     res.json(books.find(book => book.id === id))
 })
-
 
 
 app.listen(8080, () => {
