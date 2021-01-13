@@ -12,6 +12,7 @@ const swaggerJsDoc = require('swagger-jsdoc');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const items = require('./routes/items');
+const index = require('./routes/index');
 
 
 mongoose.connect(config.get('db.url'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
@@ -41,6 +42,8 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 app.use(express.json());
+
+app.use("/", index)
 app.use('/api/users', users);
 app.use('/api/auth', auth);
 /**
@@ -56,6 +59,8 @@ app.use('/api/auth', auth);
 app.use('/api/items', items);
 
 
-
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
+module.exports = app;
