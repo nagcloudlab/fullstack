@@ -1,0 +1,95 @@
+Section 3: 
+Building Custom Images Through Docker Server
+
+
+
+Creating Docker Images
+--------------------------------------------
+
+
+Building a Dockerfile
+--------------------------------------------
+
+    Create an image that runs redis-server 
+
+
+        mkdir <folder>
+        cd <folder>
+
+        code .
+
+        Dockerfile
+
+            # Use an existing docker image as base
+            FROM alpine
+
+            # Download and install a dependency
+            RUN apk add --update redis
+
+            # Tell the image what to do when it starts as container
+            CMD ["redis-server"]
+
+
+        docker build .
+        docker run <image-id>
+
+
+
+Dockerfile teardown
+--------------------------------------------        
+
+
+What's Base image?
+--------------------------------------------        
+
+
+The build process in Detail
+--------------------------------------------        
+
+
+A brief recap
+--------------------------------------------        
+
+
+
+Rebuild with cache
+-------------------------------------------- 
+
+        Dockerfile
+
+            # Use an existing docker image as base
+            FROM alpine
+
+            # Download and install a dependency
+            RUN apk add --update redis
+            RUN apk add --update gcc
+
+            # Tell the image what to do when it starts as container
+            CMD ["redis-server"]
+
+
+
+Tagging an image
+--------------------------------------------             
+
+docker build -t repo/name:version .
+
+
+
+
+Manual image generation docker commit
+--------------------------------------------             
+
+
+docker run -it alpine sh
+
+ > apk add --update redis
+
+
+ other terminal
+
+    docker commit -c 'CMD ["redis-server"]' <container-id>'
+
+
+docker run <container-id>
+

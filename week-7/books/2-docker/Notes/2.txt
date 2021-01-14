@@ -1,0 +1,133 @@
+Section 2: 
+Manipulating Containers with the Docker Client 
+
+
+Docker run detail
+------------------------------
+ 
+ docker run hello-world
+
+
+Overrding Default commands
+------------------------------
+ docker run busybox echo hello
+ docker run busybox ls
+
+
+
+Listing running containers
+------------------------------
+ 
+ docker run busybox ping google.com
+ docker ps
+ docker ps --all
+
+
+ docker container ls
+
+
+Container lifecycle
+------------------------------
+
+  docker create hello-world
+  docker start -a <container-id>
+
+  docker start <container-id>
+
+
+
+Restarting Stopped Container
+------------------------------
+
+  docker ps --all
+
+  docker run busybox echo hi there
+  docker ps --all
+
+  docker start -a <container-id>
+
+  docker start -a <container-id> echo bye there
+
+
+
+Removing Stopped Container
+------------------------------
+
+
+  docker ps --all
+  docker system prune
+
+
+Retreiving log output
+------------------------------
+
+  docker create busybox echo hi there
+  docker start <container-id>
+
+  docker logs <container-id>
+    
+
+
+Stopping Containers
+------------------------------
+
+  docker create busybox ping google.com
+  docker start <container-id>
+  docker logs <container-id>
+
+  docker stop <container-id>
+
+  docker start <container-id>
+  docker kill <container-id>
+
+
+
+Multi Command Containers
+------------------------------  
+
+  redis-server
+  redis-cli
+
+ 
+  docker run redis
+
+ 
+Executing commands in running container
+----------------------------------------
+
+  docker exec -it <container-id> <command>
+
+  docker exec <container-id> <command>    
+
+
+The purpose of the IT flag
+----------------------------------------
+
+  docker exec -i <container-id>
+
+
+Getting a command prompt in a container
+----------------------------------------
+
+  docker exec -i <container-id> sh
+
+
+Starting with shell
+----------------------------------------
+
+  docker run -it busybox sh
+
+
+Container Isolation
+----------------------------------------
+
+docker run -it busybox sh  => terminal-one
+docker run -it busybox sh  => terminal-two
+
+terminal-1:
+
+  touch file1
+
+terminal-2:
+
+  ls

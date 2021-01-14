@@ -1,0 +1,131 @@
+Section 4: 
+Making Real Projects with Docker
+
+
+
+Project Outline
+--------------------------------------------       
+
+
+
+Node Server setup
+--------------------------------------------  
+
+
+
+A Few planned Errors
+--------------------------------------------  
+
+
+Dockerfile
+
+    From alpine
+
+    RUN npm install
+
+    CMD ["npm","start"]
+
+
+docker build .
+
+
+
+Base image issues
+--------------------------------------------  
+
+
+
+Dockerfile
+
+    From node:alpine
+
+    RUN npm install
+
+    CMD ["npm","start"]
+
+
+docker build .
+
+
+
+A Few missing files
+--------------------------------------------  
+
+
+
+
+Copying build files
+--------------------------------------------  
+
+Dockerfile
+
+    From node:alpine
+
+    COPY ./ ./
+    RUN npm install
+
+    CMD ["npm","start"]
+
+
+docker build .
+docker build -t repo/name .
+
+docker run image-name
+
+
+Container Port mapping
+--------------------------------------------  
+
+
+docker run -p 8080:8080 image-name 
+
+
+Specifiying Working directory
+--------------------------------------------  
+
+
+docker run -it image-name sh
+
+ ls
+
+
+
+ Dockerfile
+
+    From node:alpine
+
+    WORKDIR /usr/app
+
+    COPY ./ ./
+    RUN npm install
+
+    CMD ["npm","start"]
+
+
+docker build -t repo/image-name .    
+
+docker run -p 8080:8080 image-name 
+
+
+docker ps
+
+docker exec -it <container-id> sh
+
+    ls
+
+
+
+Unnecessary re-builds
+--------------------------------------------
+
+
+    From node:alpine
+
+    WORKDIR /usr/app
+
+    COPY ./package.json ./
+    RUN npm install
+
+    COPY ./ ./
+
+    CMD ["npm","start"]

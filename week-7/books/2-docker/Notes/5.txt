@@ -1,0 +1,53 @@
+
+Section 5: Docker Compose with Multiple Local Containers
+
+ 
+
+
+
+App Overview & App Server starter code
+--------------------------------------------
+
+
+
+
+Assembling Dockerfile
+--------------------------------------------
+
+Dockerfile
+
+    FROM node:alpine
+
+    WORKDIR '/app'
+
+    COPY package.json .
+
+    RUN npm install
+
+    COPY . .
+
+    CMD ["npm","start"]
+
+
+docker build .
+
+
+
+
+Introducing docker compose
+--------------------------------------------
+
+
+docker run <image-name>
+
+
+docker run redis
+
+
+
+Docker compose files
+--------------------------------------------
+
+
+
+
