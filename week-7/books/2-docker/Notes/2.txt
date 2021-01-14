@@ -2,6 +2,7 @@ Section 2:
 Manipulating Containers with the Docker Client 
 
 
+
 Docker run detail
 ------------------------------
  
@@ -24,6 +25,7 @@ Listing running containers
 
 
  docker container ls
+
 
 
 Container lifecycle

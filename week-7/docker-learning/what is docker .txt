@@ -1,0 +1,11 @@
+
+
+
+
+ build   => docker-image 
+
+ ship    => docker-registry
+
+ run     => container
+
+ 
