@@ -1,0 +1,31 @@
+
+
+
+dev-team
+-------------------------
+
+    datasource
+        - key-value / in-memory => redis
+            version : Redis 5.0.6
+
+
+    backend
+
+        platform    : Node.js , v14.4.0
+        dependecies : Express , 
+        config      : ..
+        envi        : ..
+
+
+    front-end   
+
+        web-server       : nginx , apache http , IIS , etc..
+
+
+
+---------------------------------------------------------------------       
+        
+        
+
+
+

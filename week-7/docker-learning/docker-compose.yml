@@ -1,0 +1,12 @@
+version: "3"
+services:
+  redis-server:
+    image: "redis"
+  backend-app:
+    image: "nagabhushanamn/back-end"
+    ports:
+      - "8080:8080"
+  frontend-app:
+    image: "nagabhushanamn/front-end"
+    ports:
+      - "80:80"
