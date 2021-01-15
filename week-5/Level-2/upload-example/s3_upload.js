@@ -16,9 +16,9 @@ app.use(bodyParser.json());
 
 
 const s3 = new aws.S3({
-    accessKeyId: 'AKIAQD7S63PNSPTMWOEA',
-    secretAccessKey: '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',
-    Bucket: 'nagcloudlabalbum'
+    accessKeyId: 'AKIAQD7S63PNUGO6F2HM',
+    secretAccessKey: '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',
+    Bucket: 'nagcloudlab-album'
 });
 
 
@@ -28,7 +28,7 @@ const s3 = new aws.S3({
 const profileImgUpload = multer({
     storage: multerS3({
         s3: s3,
-        bucket: 'nagcloudlabalbum',
+        bucket: 'nagcloudlab-album',
         acl: 'public-read',
         key: function (req, file, cb) {
             cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now() + path.extname(file.originalname))
