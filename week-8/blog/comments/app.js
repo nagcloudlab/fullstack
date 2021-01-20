@@ -15,6 +15,19 @@ const commentsByPostId = {
 
 app.post("/events", (req, res) => {
 
+    const event = req.body;
+    const { type, data } = event;
+    if (type === "CommentModerated") {
+        const { id, postId, status } = data
+        const comments = commentsByPostId[postId]
+        const comment = comments.find(comment => comment.id === id)
+        comment.status = status
+        axios.post("http://localhost:4000/events", { type: 'CommentUpdated', data })
+    }
+    if (type === "CommentUpVoted") {
+        // TODO
+    }
+    
 })
 
 app.post("/posts/:id/comments", (req, res) => {
@@ -24,8 +37,11 @@ app.post("/posts/:id/comments", (req, res) => {
     const comments = commentsByPostId[postId] || []
     comments.push({ id, content, postId })
     commentsByPostId[postId] = comments
-    axios.post("http://localhost:4000/events", { type: 'CommentCreated', data: { id, content, postId } })
+
+    // emit event
+    axios.post("http://localhost:4000/events", { type: 'CommentCreated', data: { id, content, postId, status: 'PENDING' } })
     res.status(201).send('OK')
+
 })
 
 app.get("/posts/:id/comments", (req, res) => {

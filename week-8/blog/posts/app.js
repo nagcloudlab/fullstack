@@ -21,6 +21,7 @@ app.post("/posts", (req, res) => {
         id,
         title
     }
+    // emit emit to event bus
     axios.post("http://localhost:4000/events", { type: 'PostCreated', data: { id, title } })
     res.status(201).send('OK')
 })
