@@ -4,11 +4,27 @@
 const { ServiceBroker } = require("moleculer");
 const HTTPServer = require("moleculer-web");
 
+
 const brokerNode1 = new ServiceBroker({
-    transporter: 'nats://localhost:4222'
+
+    transporter: 'nats://localhost:4222',
+    logLevel: "debug",
+    requestTimeout: 5 * 1000,
+
+    metadata: {
+        region: "us-east-1"
+    },
+
+    retryPolicy: {
+        enabled: true,
+        retries: 5,
+        delay: 2000,
+        maxDelay: 3000,
+        factor: 2,
+        check: err => err && !!err.retryable
+    },
+
 });
-
-
 
 brokerNode1.createService({
     name: 'gateway',
@@ -25,9 +41,8 @@ brokerNode1.createService({
 })
 
 
-
-
-
-
 brokerNode1.start();
-brokerNode1.repl();
+
+
+
+

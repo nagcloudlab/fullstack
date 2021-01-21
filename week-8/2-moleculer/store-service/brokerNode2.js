@@ -5,7 +5,7 @@ const { ServiceBroker } = require("moleculer");
 
 
 const brokerNode2 = new ServiceBroker({
-    transporter: 'nats://localhost:4222'
+    transporter: 'nats://localhost:4222',
 });
 
 
@@ -14,11 +14,14 @@ brokerNode2.createService({
     actions: {
         listProducts(ctx) {
             // ....
-            return [
-                { name: "Apples", price: 5 },
-                { name: "Oranges", price: 3 },
-                { name: "Bananas", price: 2 }
-            ];
+            return {
+                node: brokerNode2.nodeID,
+                products: [
+                    { name: "Apples", price: 5 },
+                    { name: "Oranges", price: 3 },
+                    { name: "Bananas", price: 2 }
+                ]
+            }
         }
     }
 })
