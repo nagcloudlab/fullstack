@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: moderate
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: posts
+      app: moderate
   template:
     metadata:
       labels:
-        app: posts
+        app: moderate
     spec:
       containers:
-        - name: posts
-          image: nagabhushanamn/posts
+        - name: moderate
+          image: nagabhushanamn/moderate
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-svc
+  name: moderate-clusterip-svc
 spec:
   type: ClusterIP
   selector:
-    app: posts
+    app: moderate
   ports:
-    - name: posts
-      port: 4000
+    - name: moderate
+      port: 4003
       protocol: TCP
-      targetPort: 4000
+      targetPort: 4003
