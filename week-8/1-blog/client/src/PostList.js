@@ -7,7 +7,7 @@ export default () => {
   const [posts, setPosts] = useState({});
 
   const fetchPosts = async () => {
-    const res = await axios.get('http://localhost:4003/posts');
+    const res = await axios.get('http://localhost:4002/posts');
 
     setPosts(res.data);
   };
@@ -26,7 +26,6 @@ export default () => {
         <div className="card-body">
           <h3>{post.title}</h3>
           <CommentList comments={post.comments} />
-          <hr />
           <CommentCreate postId={post.id} />
         </div>
       </div>
